@@ -1,0 +1,174 @@
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Payment</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<header>
+  <h1>Payment</h1>
+  <nav>
+    <a href="index.html">Home</a> |
+    <a href="cart.html">Cart</a> |
+    <a href="profile.html">Profile</a> |
+    <a href="#" id="logout-btn">Logout</a>
+  </nav>
+</header>
+
+<main>
+  <div class="container">
+
+    <h2>Select Payment Method</h2>
+
+    <form id="paymentForm">
+      <label><input type="radio" name="payment" value="cash_on_delivery" required> Cash on Delivery</label><br>
+      <label><input type="radio" name="payment" value="credit_card"> Credit / Debit Card (Mock)</label><br>
+      <label><input type="radio" name="payment" value="paypal"> PayPal (Mock)</label><br>
+
+      <hr>
+
+      <h3>Order Summary</h3>
+      <p><strong>Subtotal:</strong> $<span id="subtotal">0.00</span></p>
+      <p><strong>Shipping:</strong> $10.00</p>
+      <p><strong>Total:</strong> $<span id="total">0.00</span></p>
+
+      <button type="submit" class="btn">Place Order</button>
+    </form>
+
+  </div>
+</main>
+
+<script src="js/payment.js"></script>
+</body>
+</html> -->
+
+
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Payment | Checkout</title>
+  <link rel="stylesheet" href="/css/style.css" />
+</head>
+<body>
+  <header>
+    <h1>Payment</h1>
+    <nav>
+      <a href="/index.html">Home</a> |
+      <a href="/cart.html">Cart</a> |
+      <a href="/profile.html">Profile</a> |
+      <a href="/login.html" id="logout-btn">Logout</a>
+    </nav>
+  </header>
+
+  <main>
+    <section class="container">
+      <h2>Payment Options (Demo)</h2>
+
+      <div id="shippingSummary"></div>
+
+      <h3>Choose Payment Method</h3>
+      <form id="paymentForm">
+        <label><input type="radio" name="method" value="cod" checked /> Cash on Delivery (Demo)</label><br/>
+        <label><input type="radio" name="method" value="card" /> Credit/Debit Card (Demo only)</label><br/>
+        <label><input type="radio" name="method" value="mobile" /> Mobile Money (Demo)</label>
+
+
+
+
+<div id="cardFields" style="display:none; margin-top:12px;">
+  <h3>Card Details (Demo Only)</h3>
+  <input type="text" id="cardNumber" placeholder="Card Number (demo)" /><br>
+  <input type="text" id="expiry" placeholder="MM/YY" /><br>
+  <input type="text" id="cvv" placeholder="CVV" /><br>
+  <p style="font-size:12px; color:#555;">
+    Use demo card: <strong>4242 4242 4242 4242</strong>
+  </p>
+</div>
+
+
+
+        <div style="margin-top:12px;">
+          <button type="button" id="backBtn" class="btn" style="background:#6c757d;">Back</button>
+          <button type="submit" class="btn">Place Order (Demo)</button>
+        </div>
+      </form>
+
+      <div id="checkoutMsg" style="margin-top:12px;"></div>
+    </section>
+  </main>
+
+  <script src="/js/payment.js"></script>
+</body>
+</html> -->
+
+
+
+
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Payment | Checkout</title>
+  <link rel="stylesheet" href="/css/style.css" />
+</head>
+<body>
+  <header>
+    <h1>Payment</h1>
+    <nav>
+      <a href="/index.html">Home</a> |
+      <a href="/cart.html">Cart</a> |
+      <a href="/profile.html">Profile</a> |
+      <a href="/login.html" id="logout-btn">Logout</a>
+    </nav>
+  </header>
+
+  <main>
+    <section class="container">
+      <h2>Payment Options (Demo)</h2>
+
+      <div id="shippingSummary"></div>
+
+      <h3>Choose Payment Method</h3>
+
+      <form id="paymentForm">
+
+        <label><input type="radio" name="method" value="cod" checked> Cash on Delivery (Demo)</label><br>
+        <label><input type="radio" name="method" value="card"> Credit/Debit Card (Demo Only)</label><br>
+        <label><input type="radio" name="method" value="mobile"> Mobile Money (Demo)</label><br>
+
+        <!-- Card Fields (hidden by default) -->
+        <div id="cardFields" style="display:none; margin-top:12px;">
+          <h3>Card Details (Demo Only)</h3>
+          <input type="text" id="cardNumber" placeholder="Card Number (demo)" /><br>
+          <input type="text" id="expiry" placeholder="MM/YY" /><br>
+          <input type="text" id="cvv" placeholder="CVV" /><br>
+          <p style="font-size:12px; color:#555;">
+            Use demo card: <strong>4242 4242 4242 4242</strong>
+          </p>
+        </div>
+
+        <div style="margin-top:12px;">
+          <button type="button" id="backBtn" class="btn" style="background:#6c757d;">Back</button>
+          <button type="submit" class="btn">Place Order (Demo)</button>
+        </div>
+      </form>
+
+      <div id="checkoutMsg" style="margin-top:12px;"></div>
+    </section>
+  </main>
+
+  <script src="/js/payment.js"></script>
+</body>
+</html>

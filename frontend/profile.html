@@ -1,0 +1,109 @@
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>My Profile</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<header>
+  <h1>My Profile</h1>
+  <nav>
+    <a href="index.html">Home</a> |
+    <a href="orders.html">Orders</a> |
+    <a href="#" id="logout-btn">Logout</a>
+  </nav>
+</header> -->
+
+<!-- <main>
+  <div class="container">
+    <h2>Your Information</h2>
+    <p><strong>Name:</strong> <span id="user-name">Loading...</span></p>
+    <p><strong>Email:</strong> <span id="user-email">Loading...</span></p>
+    <p><strong>Registered:</strong> <span id="user-date">Loading...</span></p>
+  </div>
+</main> -->
+
+<!-- 
+
+<main>
+  <div class="container">
+    <h2>Your Information</h2>
+    <p><strong>Name:</strong> <span id="user-name">Loading...</span></p>
+    <p><strong>Email:</strong> <span id="user-email">Loading...</span></p>
+    <p><strong>Registered:</strong> <span id="user-date">Loading...</span></p>
+
+    <hr>
+
+    <h2>Edit Profile</h2>
+    <form id="editProfileForm">
+      <input type="text" id="edit-name" placeholder="New Name" />
+      <input type="email" id="edit-email" placeholder="New Email" />
+      
+      <h3>Change Password</h3>
+      <input type="password" id="current-password" placeholder="Current Password" />
+      <input type="password" id="new-password" placeholder="New Password" />
+
+      <button type="submit">Save Changes</button>
+    </form>
+  </div>
+</main>
+
+
+<script src="js/profile.js"></script>
+</body>
+</html> -->
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>My Profile</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<header>
+  <h1>My Profile</h1>
+  <nav>
+    <a href="index.html">Home</a> |
+    <a href="orders.html">Orders</a> |
+    <a href="#" id="logout-btn">Logout</a>
+  </nav>
+</header>
+
+<main>
+  <div class="container">
+
+    <h2>Your Information</h2>
+    <img id="profile-avatar" src="img/default-avatar.png" class="profile-img"/>
+<form id="avatarForm" enctype="multipart/form-data">
+  <input type="file" id="avatar" accept="image/*">
+  <button type="submit" class="btn">Upload Picture</button>
+</form>
+
+
+    <p><strong>Name:</strong> <span id="user-name">Loading...</span></p>
+    <p><strong>Email:</strong> <span id="user-email">Loading...</span></p>
+    <p><strong>Registered:</strong> <span id="user-date">Loading...</span></p>
+
+    <hr>
+
+    <button onclick="window.location.href='edit-profile.html'" class="btn">
+      ✏ Edit Profile
+    </button>
+
+    <button onclick="window.location.href='change-password.html'" class="btn">
+      🔒 Change Password
+    </button>
+
+  </div>
+</main>
+
+<script src="js/profile.js"></script>
+</body>
+</html>

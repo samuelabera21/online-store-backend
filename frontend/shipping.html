@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Shipping Details | Checkout</title>
+  <link rel="stylesheet" href="/css/style.css" />
+</head>
+<body>
+  <header>
+    <h1>Shipping Details</h1>
+    <nav>
+      <a href="/index.html">Home</a> |
+      <a href="/cart.html">Cart</a> |
+      <a href="/profile.html">Profile</a> |
+      <a href="/login.html" id="logout-btn">Logout</a>
+    </nav>
+  </header>
+
+  <main>
+    <section class="container">
+      <h2>Enter Shipping Information</h2>
+
+      <form id="shippingForm">
+        <label>Full Name</label>
+        <input type="text" id="fullName" required />
+
+        <label>Email (read-only)</label>
+        <input type="email" id="email" readonly />
+
+        <label>Phone Number</label>
+        <input type="tel" id="phone" placeholder="+251..." required />
+
+        <label>Street Address</label>
+        <input type="text" id="address" placeholder="Street, building, etc." required />
+
+        <label>Country</label>
+        <input type="text" id="country" required />
+
+        <label>City</label>
+        <input type="text" id="city" required />
+
+        <label>Postal / ZIP Code</label>
+        <input type="text" id="postal" required />
+
+        <div style="margin-top:12px;">
+          <button type="submit" class="btn">Continue to Payment</button>
+          <a href="/cart.html" class="btn" style="background:#6c757d; margin-left:8px;">Back to Cart</a>
+        </div>
+      </form>
+    </section>
+  </main>
+
+  <script src="/js/shipping.js"></script>
+</body>
+</html>

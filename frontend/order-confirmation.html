@@ -1,0 +1,104 @@
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Order Confirmation</title>
+  <link rel="stylesheet" href="/css/style.css" />
+</head>
+<body>
+  <header>
+    <h1>Order Confirmation</h1>
+    <nav>
+      <a href="/index.html">Home</a> |
+      <a href="/orders.html">My Orders</a> |
+      <a href="/profile.html">Profile</a>
+    </nav>
+  </header>
+
+  <main>
+    <section class="container">
+      <h2>Thank you for your order!</h2>
+      <div id="confirmation"></div>
+      <a href="/index.html" class="btn">Continue Shopping</a>
+      <a href="/orders.html" class="btn" style="background:#6c757d">View Orders</a>
+    </section>
+  </main>
+
+  <script>
+    const last = JSON.parse(localStorage.getItem("last_order") || "{}");
+    const el = document.getElementById("confirmation");
+    if (!last.orderId) {
+      el.innerHTML = "<p>Order details not available.</p>";
+    } else {
+      el.innerHTML = `
+        <p><strong>Order ID:</strong> ${last.orderId}</p>
+        <p><strong>Total:</strong> $${Number(last.total).toFixed(2)}</p>
+        <p><strong>Date:</strong> ${new Date().toLocaleString()}</p>
+      `;
+      // optionally remove last_order after display:
+      // localStorage.removeItem("last_order");
+    }
+  </script>
+</body>
+</html> -->
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Order Confirmation</title>
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+
+  <header>
+    <h1>Order Confirmation</h1>
+    <nav>
+      <a href="/index.html">Home</a> |
+      <a href="/orders.html">My Orders</a> |
+      <a href="/profile.html">Profile</a>
+    </nav>
+  </header>
+
+  <main class="container">
+    <h2>Thank you for your order!</h2>
+
+    <!-- THIS IS WHAT WAS MISSING -->
+    <div id="confirmation"></div>
+
+    <div style="margin-top: 20px;">
+      <a href="/index.html" class="btn">Continue Shopping</a>
+      <a href="/orders.html" class="btn">View Orders</a>
+    </div>
+  </main>
+
+  <script>
+    const last = JSON.parse(localStorage.getItem("last_order") || "{}");
+
+    const el = document.getElementById("confirmation");
+
+    if (!last.orderId) {
+      el.innerHTML = "<p>Order details not available.</p>";
+    } else {
+      el.innerHTML = `
+        <p><strong>Order ID:</strong> ${last.orderId}</p>
+        <p><strong>Total:</strong> $${Number(last.total).toFixed(2)}</p>
+        <p><strong>Payment Method:</strong> ${last.payment_method || 'N/A'}</p>
+        <p><strong>Date:</strong> ${new Date().toLocaleString()}</p>
+
+        <h4>Shipping</h4>
+        <p>${last.shipping?.fullName || ''} — ${last.shipping?.email || ''}</p>
+        <p>${last.shipping?.address || ''}, ${last.shipping?.city || ''}, ${last.shipping?.country || ''}, ${last.shipping?.postal || ''}</p>
+        <p>Phone: ${last.shipping?.phone || ''}</p>
+      `;
+    }
+  </script>
+
+</body>
+</html>
