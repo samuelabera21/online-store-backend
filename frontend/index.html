@@ -1,11 +1,17 @@
-<!doctype html>
+<!-- <!doctype html>
 <html>
 <head>
   <meta charset="utf-8" />
   <title>Products - My Store</title>
-  <link rel="stylesheet" href="/css/style.css">
+
+<link rel="stylesheet" href="/frontend/css/style.css">
+<link rel="stylesheet" href="/frontend/css/pages/index.css">
+<link rel="stylesheet" href="/frontend/css/components/navbar.css">
+<link rel="stylesheet" href="/frontend/css/components/buttons.css">
+<link rel="stylesheet" href="/frontend/css/components/card.css">
+
   <style>
-    /* minimal inline fallback if no style.css loaded */
+    
     body{font-family:Arial,Helvetica,sans-serif;margin:20px}
     .products-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:16px}
     .product-card{border:1px solid #ddd;padding:12px;border-radius:6px;background:#fff}
@@ -20,16 +26,7 @@
 <body>
   <header>
     <h1>My E-commerce Store</h1>
-    <!-- <nav>
-      <a href="/index.html">Home</a> |
-      <a href="/login.html">Login</a> |
-      <a href="/register.html">Register</a> |
-      <a href="/cart.html">My-Cart</a>
-     
-      
-       admin dashboard link will show after login (frontend) 
-    </nav> -->
-
+  
 
 
     <nav id="nav-links">
@@ -94,4 +91,87 @@
   <script src="/js/products.js"></script>
 
 </body>
-</html>
+</html> -->
+
+
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <title>Products - My Store</title>
+
+
+  <link rel="stylesheet" href="/css/style.css">
+<link rel="stylesheet" href="/css/pages/index.css">
+<link rel="stylesheet" href="/css/components/navbar.css">
+<link rel="stylesheet" href="/css/components/buttons.css">
+<link rel="stylesheet" href="/css/components/card.css">
+
+</head>
+
+<body>
+  <header>
+    <h1>My E-commerce Store</h1>
+
+    <nav id="nav-links">
+      <a href="/index.html">Home</a> |
+      <a href="/cart.html">Cart</a> |
+      <a href="/checkout.html">Checkout</a>
+      
+    </nav>
+
+    <script>
+      const token = localStorage.getItem("token");
+      const role = localStorage.getItem("role");
+      const nav = document.getElementById("nav-links");
+
+      if (token) {
+        nav.innerHTML += ` |
+          <a href="/orders.html">Orders</a> |
+          <a href="/shipping.html">Shipping</a> |
+          <a href="/profile.html">Profile</a> |
+          <a href="/login.html" id="logout-btn">Logout</a>`;
+
+        if (role === "admin") {
+          nav.innerHTML += ` | <a href="/admin/dashboard.html">Admin</a>`;
+        }
+      } else {
+        nav.innerHTML += ` |
+          <a href="/login.html">Login</a> |
+          <a href="/register.html">Register</a>`;
+      }
+    </script>
+
+    <hr/>
+  </header>
+
+  
+  <div class="product-filters">
+    <input type="text" id="searchInput" placeholder="Search products..." />
+
+    <select id="priceFilter">
+      <option value="all">All Prices</option>
+      <option value="0-50">$0 - $50</option>
+      <option value="50-100">$50 - $100</option>
+      <option value="100-200">$100 - $200</option>
+      <option value="200+">$200+</option>
+    </select>
+
+    <select id="sortFilter">
+      <option value="default">Sort By</option>
+      <option value="low-high">Price: Low → High</option>
+      <option value="high-low">Price: High → Low</option>
+    </select>
+  </div>
+
+
+  <main>
+    <section id="products">
+      <h2>Products</h2>
+      <div id="products-list" class="products-grid"></div>
+    </section>
+  </main>
+
+  <script src="/js/products.js"></script>
+</body>
+</html> 

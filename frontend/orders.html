@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!-- <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
@@ -21,6 +21,43 @@
     <div id="orders-container" class="container">
       <p>Loading orders...</p>
     </div>
+  </main>
+
+  <script src="/js/orders.js"></script>
+</body>
+</html> -->
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>My Orders</title>
+
+  <!-- GLOBAL + PAGE STYLES -->
+  <link rel="stylesheet" href="/css/style.css">
+  <link rel="stylesheet" href="/css/components/navbar.css">
+  <link rel="stylesheet" href="/css/pages/orders.css">
+</head>
+
+<body>
+
+  <!-- NAVBAR -->
+  <header>
+    <h1>My Orders</h1>
+
+    <nav id="nav-links">
+      <a href="/index.html">Home</a> |
+      <a href="/cart.html">Cart</a> |
+      <a href="#" id="logout-btn">Logout</a>
+    </nav>
+  </header>
+
+  <main>
+    <section id="orders-container" class="orders-list">
+      <p class="loading">Loading your orders...</p>
+    </section>
   </main>
 
   <script src="/js/orders.js"></script>

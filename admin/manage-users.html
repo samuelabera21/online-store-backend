@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!-- <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
@@ -70,5 +70,59 @@
   </main>
 
   <script src="/admin/js/manage-users.js"></script>
+</body>
+</html> -->
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Manage Users</title>
+
+  <!-- Global Styles -->
+  <link rel="stylesheet" href="/css/style.css" />
+
+  <!-- Page-specific Styles -->
+  <link rel="stylesheet" href="/css/pages/manage-users.css" />
+</head>
+<body>
+
+<header>
+  <h1>Manage Users</h1>
+  <nav>
+    <a href="/admin/dashboard.html">Dashboard</a> |
+    <a href="/admin/manage-products.html">Manage Products</a> |
+    <a href="/index.html">User Site</a> |
+    <a href="#" id="logout-btn">Logout</a>
+  </nav>
+</header>
+
+<main>
+  <section class="container">
+    <h2>All Users</h2>
+
+    <table class="user-table" id="user-table">
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Name</th>
+          <th>Email</th>
+          <th>Role</th>
+          <th>Joined</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+
+      <tbody id="user-body">
+        <tr><td colspan="6">Loading users...</td></tr>
+      </tbody>
+    </table>
+  </section>
+</main>
+
+<script src="/admin/js/manage-users.js"></script>
 </body>
 </html>

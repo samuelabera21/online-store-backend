@@ -1,0 +1,123 @@
+/* ==========================
+   PAYMENT PAGE STYLING
+========================== */
+body {
+  background: #f5f7fa;
+  font-family: "Segoe UI", sans-serif;
+}
+
+.header {
+  background: #fff;
+  padding: 15px 20px;
+  border-bottom: 1px solid #ddd;
+}
+
+.header h1 {
+  margin-bottom: 10px;
+}
+
+.nav a {
+  margin-right: 12px;
+  color: #007bff;
+  text-decoration: none;
+}
+
+.nav a:hover {
+  text-decoration: underline;
+}
+
+/* Container */
+.checkout-container {
+  width: 90%;
+  max-width: 600px;
+  margin: 35px auto;
+  background: #fff;
+  border-radius: 10px;
+  padding: 25px;
+  box-shadow: 0 3px 12px rgba(0,0,0,0.08);
+}
+
+.section-title {
+  font-size: 22px;
+  margin-bottom: 15px;
+}
+
+.shipping-summary {
+  background: #f1f5ff;
+  padding: 12px;
+  border-radius: 8px;
+  margin-bottom: 20px;
+}
+
+.sub-title {
+  margin-top: 20px;
+  font-size: 18px;
+  margin-bottom: 10px;
+}
+
+/* Payment options */
+.pay-option {
+  display: block;
+  background: #fafafa;
+  padding: 12px;
+  border-radius: 8px;
+  margin-bottom: 10px;
+  border: 1px solid #ddd;
+  cursor: pointer;
+}
+
+.pay-option:hover {
+  background: #f0f6ff;
+}
+
+/* Card fields */
+.card-fields {
+  display: none;
+  background: #eef4ff;
+  padding: 15px;
+  border-radius: 8px;
+  margin-top: 12px;
+}
+
+.card-fields input {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 10px;
+  border-radius: 6px;
+  border: 1px solid #bbb;
+}
+
+.demo-hint {
+  font-size: 12px;
+  color: #666;
+}
+
+/* Buttons */
+.buttons {
+  margin-top: 15px;
+  display: flex;
+  gap: 10px;
+}
+
+.btn {
+  padding: 10px 15px;
+  border-radius: 6px;
+  border: none;
+  cursor: pointer;
+  font-size: 15px;
+}
+
+.btn-primary {
+  background: #007bff;
+  color: white;
+}
+
+.btn-secondary {
+  background: #6c757d;
+  color: white;
+}
+
+.checkout-msg {
+  margin-top: 15px;
+  font-size: 14px;
+}

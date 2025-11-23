@@ -47,7 +47,7 @@
 
 
 
-<!DOCTYPE html>
+<!-- <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
@@ -69,7 +69,7 @@
   <main class="container">
     <h2>Thank you for your order!</h2>
 
-    <!-- THIS IS WHAT WAS MISSING -->
+  
     <div id="confirmation"></div>
 
     <div style="margin-top: 20px;">
@@ -96,6 +96,84 @@
         <p>${last.shipping?.fullName || ''} — ${last.shipping?.email || ''}</p>
         <p>${last.shipping?.address || ''}, ${last.shipping?.city || ''}, ${last.shipping?.country || ''}, ${last.shipping?.postal || ''}</p>
         <p>Phone: ${last.shipping?.phone || ''}</p>
+      `;
+    }
+  </script>
+
+</body>
+</html> -->
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Order Confirmation</title>
+
+  <!-- New CSS structure -->
+  <link rel="stylesheet" href="/css/style.css">
+  <link rel="stylesheet" href="/css/pages/order-confirmation.css">
+  <link rel="stylesheet" href="/css/components/navbar.css">
+  <link rel="stylesheet" href="/css/components/buttons.css">
+  <link rel="stylesheet" href="/css/components/card.css">
+</head>
+
+<body>
+
+  <header class="navbar">
+    <h1>Order Confirmation</h1>
+    <nav>
+      <a href="/index.html">Home</a> |
+      <a href="/orders.html">My Orders</a> |
+      <a href="/profile.html">Profile</a>
+    </nav>
+  </header>
+
+  <main class="container">
+    <div class="confirmation-wrapper">
+      <h2>🎉 Thank you for your purchase!</h2>
+
+      <p class="sub-text">Your order has been received and is now being processed.</p>
+
+      <!-- Order Result -->
+      <div id="confirmation" class="confirmation-card"></div>
+
+      <div class="buttons">
+        <a href="/index.html" class="btn btn-primary">Continue Shopping</a>
+        <a href="/orders.html" class="btn btn-secondary">View Orders</a>
+      </div>
+    </div>
+  </main>
+
+  <script>
+    const last = JSON.parse(localStorage.getItem("last_order") || "{}");
+    const el = document.getElementById("confirmation");
+
+    if (!last.orderId) {
+      el.innerHTML = "<p>Order details not available.</p>";
+    } else {
+      el.innerHTML = `
+        <div class="order-block">
+          <p><strong>Order ID:</strong> ${last.orderId}</p>
+          <p><strong>Total Paid:</strong> $${Number(last.total).toFixed(2)}</p>
+          <p><strong>Payment Method:</strong> ${last.payment_method || 'N/A'}</p>
+          <p><strong>Date:</strong> ${new Date().toLocaleString()}</p>
+        </div>
+
+        <h3>Shipping Details</h3>
+
+        <div class="shipping-block">
+          <p><strong>Name:</strong> ${last.shipping?.fullName || ''}</p>
+          <p><strong>Email:</strong> ${last.shipping?.email || ''}</p>
+          <p><strong>Phone:</strong> ${last.shipping?.phone || ''}</p>
+          <p><strong>Address:</strong> 
+            ${last.shipping?.address || ''}, 
+            ${last.shipping?.city || ''}, 
+            ${last.shipping?.country || ''}, 
+            ${last.shipping?.postal || ''}
+          </p>
+        </div>
       `;
     }
   </script>

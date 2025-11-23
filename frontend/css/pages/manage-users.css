@@ -1,0 +1,116 @@
+/* ==========================
+   GLOBAL PAGE LAYOUT
+========================== */
+body {
+  font-family: "Segoe UI", Arial, sans-serif;
+  background: #f5f7fa;
+  margin: 0;
+  padding: 0;
+  color: #333;
+}
+
+/* ==========================
+   HEADER
+========================== */
+header {
+  background: #fff;
+  padding: 22px;
+  border-bottom: 1px solid #ddd;
+  text-align: center;
+}
+
+header h1 {
+  margin: 0;
+  font-size: 28px;
+  font-weight: 700;
+}
+
+header nav {
+  margin-top: 8px;
+}
+
+header nav a {
+  color: #007bff;
+  text-decoration: none;
+  margin: 0 8px;
+  font-weight: 500;
+}
+
+header nav a:hover {
+  text-decoration: underline;
+}
+
+/* ==========================
+   CONTAINER
+========================== */
+.container {
+  max-width: 1050px;
+  margin: 30px auto;
+  background: #ffffff;
+  padding: 25px;
+  border-radius: 10px;
+  box-shadow: 0 3px 10px rgba(0,0,0,0.06);
+}
+
+.container h2 {
+  font-size: 22px;
+  font-weight: 600;
+  margin-bottom: 18px;
+}
+
+/* ==========================
+   USER TABLE
+========================== */
+.user-table {
+  width: 100%;
+  border-collapse: collapse;
+  overflow: hidden;
+  border-radius: 8px;
+  background: #fff;
+}
+
+.user-table thead {
+  background: #007bff;
+  color: #fff;
+}
+
+.user-table th, .user-table td {
+  padding: 12px;
+  text-align: left;
+  border-bottom: 1px solid #e6e6e6;
+}
+
+.user-table tr:hover {
+  background: #f9f9f9;
+}
+
+/* ==========================
+   BUTTONS (SMALL)
+========================== */
+.btn-small {
+  padding: 6px 10px;
+  font-size: 13px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-right: 6px;
+  font-weight: 500;
+}
+
+.btn-delete {
+  background: #dc3545;
+  color: #fff;
+}
+
+.btn-delete:hover {
+  background: #b51f2e;
+}
+
+.btn-role {
+  background: #007bff;
+  color: #fff;
+}
+
+.btn-role:hover {
+  background: #005fcc;
+}

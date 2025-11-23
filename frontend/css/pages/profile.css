@@ -1,0 +1,116 @@
+/* =====================================================
+   GLOBAL
+===================================================== */
+body {
+  font-family: "Segoe UI", Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  background: #f5f7fa;
+  color: #333;
+}
+
+.container {
+  max-width: 620px;
+  margin: 40px auto;
+  background: #fff;
+  padding: 25px;
+  border-radius: 12px;
+  box-shadow: 0 4px 18px rgba(0,0,0,0.08);
+}
+
+/* =====================================================
+   HEADER / NAVBAR
+===================================================== */
+header {
+  background: #fff;
+  padding: 15px 25px;
+  border-bottom: 1px solid #ddd;
+}
+
+header h1 {
+  margin: 0;
+  font-size: 26px;
+  font-weight: 700;
+}
+
+nav a {
+  text-decoration: none;
+  color: #007bff;
+  font-weight: 500;
+  margin-right: 10px;
+}
+
+nav a:hover {
+  text-decoration: underline;
+}
+
+/* =====================================================
+   PROFILE IMAGE
+===================================================== */
+.profile-img {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  display: block;
+  margin: 15px 0;
+  object-fit: cover;
+  border: 3px solid #ddd;
+}
+
+#avatarForm {
+  margin-bottom: 25px;
+}
+
+#avatar {
+  padding: 10px;
+}
+
+/* =====================================================
+   TEXT SECTIONS
+===================================================== */
+h2 {
+  font-size: 22px;
+  margin-bottom: 10px;
+  font-weight: 700;
+}
+
+p {
+  font-size: 15px;
+  margin: 8px 0;
+}
+
+/* =====================================================
+   BUTTONS
+===================================================== */
+.btn {
+  display: inline-block;
+  background: #007bff;
+  color: #fff;
+  padding: 10px 14px;
+  border-radius: 8px;
+  text-decoration: none;
+  border: none;
+  margin-top: 10px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: 0.2s;
+}
+
+.btn:hover {
+  background: #005fcc;
+}
+
+button.btn {
+  padding: 10px 16px;
+}
+
+hr {
+  margin: 20px 0;
+  border: none;
+  border-bottom: 1px solid #ddd;
+}
+
+/* Edit + Change Password Buttons */
+.btn + .btn {
+  margin-left: 8px;
+}

@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!-- <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
@@ -83,5 +83,71 @@
   </main>
 
   <script src="/admin/js/manage-products.js"></script>
+</body>
+</html> -->
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Manage Products</title>
+
+  <link rel="stylesheet" href="/css/style.css" />
+  <link rel="stylesheet" href="/css/pages/manage-products.css">
+</head>
+<body>
+
+<header>
+  <h1>Manage Products</h1>
+  <nav>
+    <a href="/admin/dashboard.html">Dashboard</a> |
+    <a href="/admin/manage-users.html">Manage Users</a> |
+    <a href="/index.html">User Site</a> |
+    <a href="#" id="logout-btn">Logout</a>
+  </nav>
+</header>
+
+<main>
+  <section>
+    <h2>All Products</h2>
+
+    <!-- PRODUCT TABLE -->
+    <table class="product-table" id="product-table">
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Name</th>
+          <th>Price</th>
+          <th>Stock</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody id="product-body">
+        <tr><td colspan="5">Loading...</td></tr>
+      </tbody>
+    </table>
+  </section>
+
+  <!-- FORM SECTION -->
+  <section class="form-container">
+    <h3 id="form-title">Add New Product</h3>
+
+    <form id="productForm" enctype="multipart/form-data">
+      <input type="hidden" id="productId" />
+      <input type="text" id="name" placeholder="Product Name" required />
+      <input type="text" id="description" placeholder="Description" />
+      <input type="number" id="price" placeholder="Price" required step="0.01" />
+      <input type="file" id="image" accept="image/*" />
+      <input type="number" id="stock" placeholder="Stock" />
+      <button type="submit" class="btn">Save Product</button>
+    </form>
+  </section>
+
+</main>
+
+<script src="/admin/js/manage-products.js"></script>
 </body>
 </html>

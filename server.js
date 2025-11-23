@@ -27,7 +27,9 @@ app.use(cors());
 app.use(bodyParser.json());
 
 // add this after app.use(bodyParser.json());
-app.use(express.static(path.join(__dirname, "frontend")));
+// app.use(express.static(path.join(__dirname, "frontend")));
+app.use("/", express.static(path.join(__dirname, "frontend")));
+
 app.use("/uploads", express.static("uploads"));
 
 
@@ -40,9 +42,7 @@ app.use("/api/auth", authRoutes);
 app.use("/api/orders", orderRoutes);
 
 app.use("/uploads", express.static("uploads"));
-
-
-// ✅ Cart routes
+ 
 app.use("/api/cart", cartRoutes);
 
 // ✅ Create tables

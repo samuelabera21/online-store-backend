@@ -113,7 +113,7 @@
 
 
 
-
+<!-- 
 
 <!DOCTYPE html>
 <html lang="en">
@@ -148,7 +148,7 @@
         <label><input type="radio" name="method" value="card"> Credit/Debit Card (Demo Only)</label><br>
         <label><input type="radio" name="method" value="mobile"> Mobile Money (Demo)</label><br>
 
-        <!-- Card Fields (hidden by default) -->
+      
         <div id="cardFields" style="display:none; margin-top:12px;">
           <h3>Card Details (Demo Only)</h3>
           <input type="text" id="cardNumber" placeholder="Card Number (demo)" /><br>
@@ -166,6 +166,83 @@
       </form>
 
       <div id="checkoutMsg" style="margin-top:12px;"></div>
+    </section>
+  </main>
+
+  <script src="/js/payment.js"></script>
+</body>
+</html> -->
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Payment | Checkout</title>
+
+  <!-- New styled CSS path (same structure you use) -->
+  <link rel="stylesheet" href="/css/style.css">
+  <link rel="stylesheet" href="/css/pages/payment.css">
+</head>
+
+<body>
+  <header class="header">
+    <h1>Secure Payment</h1>
+
+    <nav class="nav">
+      <a href="/index.html">Home</a>
+      <a href="/cart.html">Cart</a>
+      <a href="/profile.html">Profile</a>
+      <a href="/login.html" id="logout-btn">Logout</a>
+    </nav>
+  </header>
+
+  <main>
+    <section class="checkout-container">
+      <h2 class="section-title">Payment Options</h2>
+
+      <!-- Shipping details summary auto-filled -->
+      <div id="shippingSummary" class="shipping-summary"></div>
+
+      <h3 class="sub-title">Select Payment Method</h3>
+
+      <form id="paymentForm" class="payment-form">
+
+        <label class="pay-option">
+          <input type="radio" name="method" value="cod" checked>
+          Cash on Delivery (COD)
+        </label>
+
+        <label class="pay-option">
+          <input type="radio" name="method" value="card">
+          Credit/Debit Card (Demo)
+        </label>
+
+        <label class="pay-option">
+          <input type="radio" name="method" value="mobile">
+          Mobile Money (Demo)
+        </label>
+
+        <!-- Hidden card fields -->
+        <div id="cardFields" class="card-fields">
+          <h3>Card Details</h3>
+
+          <input type="text" id="cardNumber" placeholder="Card Number (demo)">
+          <input type="text" id="expiry" placeholder="MM/YY">
+          <input type="text" id="cvv" placeholder="CVV">
+          <p class="demo-hint">
+            Use demo card: <strong>4242 4242 4242 4242</strong>
+          </p>
+        </div>
+
+        <div class="buttons">
+          <button type="button" id="backBtn" class="btn btn-secondary">Back</button>
+          <button type="submit" class="btn btn-primary">Place Order</button>
+        </div>
+      </form>
+
+      <div id="checkoutMsg" class="checkout-msg"></div>
     </section>
   </main>
 

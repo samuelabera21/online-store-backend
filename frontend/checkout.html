@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!-- <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
@@ -32,6 +32,57 @@
     <p><strong>Total: $<span id="total">0</span></strong></p>
 
     <button id="proceed-shipping" class="btn">Continue to Shipping</button>
+
+  </div>
+</main>
+
+<script src="js/checkout.js"></script>
+</body>
+</html> -->
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Checkout</title>
+
+  <!-- Global + Page CSS -->
+  <link rel="stylesheet" href="/css/style.css">
+  <link rel="stylesheet" href="/css/pages/checkout.css">
+</head>
+<body>
+
+<header>
+  <h1>Checkout</h1>
+  <nav>
+    <a href="index.html">Home</a> |
+    <a href="cart.html">Cart</a> |
+    <a href="profile.html">Profile</a> |
+    <a href="#" id="logout-btn">Logout</a>
+  </nav>
+</header>
+
+<main>
+  <div class="checkout-container">
+
+    <h2>Your Items</h2>
+    <div id="checkout-items" class="checkout-items"></div>
+
+    <hr>
+
+    <h3>Summary</h3>
+    <div class="summary-box">
+      <p>Subtotal: $<span id="subtotal">0</span></p>
+      <p>Shipping: $<span id="shipping">10</span></p>
+      <p class="summary-total">Total: $<span id="total">0</span></p>
+    </div>
+
+    <button id="proceed-shipping" class="btn btn-primary">
+      Continue to Shipping
+    </button>
 
   </div>
 </main>
