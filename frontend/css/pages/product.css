@@ -1,80 +1,79 @@
-/* ==========================
-   PRODUCT PAGE LAYOUT
-========================== */
-body {
-  font-family: "Segoe UI", Arial, sans-serif;
-  background: #f7f7f7;
-  padding: 20px;
+/* =====================================================
+   CORE & ANIMATIONS
+===================================================== */
+html {
+  scroll-behavior: smooth;
 }
 
-/* PAGE CONTAINER */
-.container {
-  max-width: 1100px;
-  margin: auto;
-  display: flex;
-  gap: 40px;
-  background: #fff;
-  padding: 25px;
-  border-radius: 10px;
-  box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+/* Animations matching Profile Page */
+.reveal {
+  opacity: 0;
+  transform: translateY(30px);
+  animation: revealAnim 0.8s cubic-bezier(0.5, 0, 0, 1) forwards;
 }
 
-/* PRODUCT IMAGE */
-.product-image {
-  width: 45%;
+.delay-100 { animation-delay: 0.1s; }
+.delay-200 { animation-delay: 0.2s; }
+.delay-300 { animation-delay: 0.3s; }
+
+@keyframes revealAnim {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
-.product-image img {
-  width: 100%;
-  height: 350px;
-  object-fit: cover;
-  border-radius: 10px;
+/* Button Focus States */
+button:focus-visible {
+  outline: 2px solid #007bff;
+  outline-offset: 2px;
 }
 
-/* PRODUCT INFO */
-.product-info {
-  width: 55%;
-}
-
-.product-info h2 {
-  font-size: 26px;
-  margin-bottom: 15px;
-  font-weight: 600;
-}
-
-.product-info .price {
-  font-size: 22px;
-  font-weight: bold;
-  color: #28a745;
-  margin-bottom: 15px;
-}
-
-.product-info .desc {
-  font-size: 15px;
-  color: #555;
-  margin-bottom: 25px;
-}
-
-/* BUTTONS */
-.btn-primary {
-  background: #007bff;
+/* Toast Notification System */
+.toast {
+  position: fixed;
+  top: 90px; /* Below navbar */
+  right: 20px;
+  background: #28c76f;
   color: #fff;
-  padding: 10px 14px;
-  border-radius: 6px;
-  border: none;
-  cursor: pointer;
-  margin-right: 12px;
-  font-size: 15px;
+  padding: 12px 20px;
+  border-radius: 12px;
+  font-size: 14px;
+  font-weight: 600;
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+  opacity: 1;
+  transition: opacity .5s, transform .3s;
+  z-index: 9999;
+  animation: slideIn .3s ease-out;
+  display: flex;
+  align-items: center;
+  gap: 10px;
 }
 
-.btn-primary:hover {
-  background: #0063d1;
+.toast-error {
+  background: #ff4d4f;
 }
 
-.btn-cart {
-  background: #28a745;
+@keyframes slideIn {
+  from {
+    transform: translateX(60px);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
 }
 
-.btn-cart:hover {
-  background: #1e7c34;
+/* Image hover effect container */
+.product-image-container {
+  overflow: hidden;
+}
+
+.product-image-container img {
+  transition: transform 0.7s ease-in-out;
+}
+
+.product-image-container:hover img {
+  transform: scale(1.05);
 }

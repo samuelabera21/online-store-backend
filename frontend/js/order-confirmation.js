@@ -122,7 +122,7 @@ function renderOrderDetails(order, container) {
                     
                     <div class="space-y-3 border-b border-gray-200 pb-4 mb-4">
                         <div class="flex justify-between text-gray-600">
-                            <span>Subtotal</span>
+                            <span>price</span>
                             <span>${totalFormatted}</span> <!-- Simplified assuming total is passed -->
                         </div>
                         <div class="flex justify-between text-gray-600">
