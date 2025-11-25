@@ -94,7 +94,13 @@
 </html> -->
 
 
-<!doctype html>
+
+
+
+
+
+
+<!-- <!doctype html>
 <html>
 <head>
   <meta charset="utf-8" />
@@ -116,7 +122,8 @@
     <nav id="nav-links">
       <a href="/index.html">Home</a> |
       <a href="/cart.html">Cart</a> |
-      <a href="/checkout.html">Checkout</a>
+        <a href="/welcome.html">Back to Welcome</a>
+     
       
     </nav>
 
@@ -174,4 +181,216 @@
 
   <script src="/js/products.js"></script>
 </body>
-</html> 
+</html>  -->
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Shop - LuxeStore</title>
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            fontFamily: {
+              sans: ['Inter', 'sans-serif'],
+            },
+            colors: {
+              primary: '#2563eb', // Blue-600
+              secondary: '#1e293b', // Slate-800
+            }
+          },
+        },
+      }
+    </script>
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/js/index.css">
+
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+<script type="importmap">
+{
+  "imports": {
+    "react": "https://aistudiocdn.com/react@^19.2.0",
+    "react-dom/": "https://aistudiocdn.com/react-dom@^19.2.0/",
+    "lucide-react": "https://aistudiocdn.com/lucide-react@^0.554.0",
+    "react/": "https://aistudiocdn.com/react@^19.2.0/"
+  }
+}
+</script>
+</head>
+<body class="bg-gray-50 font-sans text-gray-900 antialiased">
+
+    <!-- Navbar -->
+    <nav id="navbar" class="fixed top-0 left-0 w-full z-50 transition-all duration-300 bg-transparent py-5">
+        <div class="container mx-auto px-6 flex justify-between items-center">
+            <!-- Logo -->
+            <a href="/welcome.html" class="flex items-center gap-2 group">
+                <div class="bg-blue-600 p-2 rounded-lg text-white transition-transform group-hover:scale-110">
+                    <i data-lucide="shopping-bag" class="w-6 h-6"></i>
+                </div>
+                <span class="text-xl font-bold tracking-tight text-gray-800 group-hover:text-blue-600 transition-colors">
+                    LuxeStore
+                </span>
+            </a>
+
+            <!-- Desktop Links -->
+            <div id="desktop-menu" class="hidden md:flex items-center space-x-8">
+                <a href="/index.html" class="text-sm font-medium text-blue-600">Home</a>
+                <!-- <a href="/categories.html" class="text-sm font-medium text-gray-600 hover:text-blue-600 transition-colors">Categories</a> -->
+                <a href="/cart.html" class="text-sm font-medium text-gray-600 hover:text-blue-600 transition-colors">Cart</a>
+                <!-- Auth Links injected by JS -->
+                <span id="auth-links-desktop" class="flex gap-6"></span>
+             
+            </div>
+
+            <!-- Icons -->
+            <div class="hidden md:flex items-center space-x-5">
+                <button class="text-gray-600 hover:text-blue-600 transition-colors">
+                    <i data-lucide="search" class="w-5 h-5"></i>
+                </button>
+                <a href="/cart.html" class="text-gray-600 hover:text-blue-600 transition-colors relative">
+                    <i data-lucide="shopping-cart" class="w-5 h-5"></i>
+                    <span id="cart-badge" class="absolute -top-2 -right-2 bg-blue-600 text-white text-[10px] font-bold h-4 w-4 rounded-full flex items-center justify-center opacity-0 transition-opacity">0</span>
+                </a>
+            </div>
+
+            <!-- Mobile Toggle -->
+            <button id="mobile-menu-btn" class="md:hidden text-gray-700 focus:outline-none">
+                <i data-lucide="menu" class="w-6 h-6"></i>
+            </button>
+        </div>
+
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden absolute top-full left-0 w-full bg-white shadow-lg border-t border-gray-100 flex-col animate-slide-down">
+            <div class="p-4 space-y-4">
+                <a href="/index.html" class="block text-base font-medium text-blue-600">Home</a>
+                <!-- <a href="/categories.html" class="block text-base font-medium text-gray-700 hover:text-blue-600">Categories</a> -->
+                <a href="/cart.html" class="block text-base font-medium text-gray-700 hover:text-blue-600">Cart</a>
+                <div id="auth-links-mobile" class="space-y-4 border-t border-gray-100 pt-4"></div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <header class="pt-32 pb-12 px-6 bg-gradient-to-b from-blue-50 to-transparent">
+        <div class="container mx-auto text-center reveal">
+            <h1 class="text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 mb-3 tracking-tight">
+                Explore Our Products
+            </h1>
+            <p class="text-gray-500 text-base md:text-lg max-w-2xl mx-auto">
+                Discover premium quality items curated just for you. Upgrade your lifestyle today.
+            </p>
+        </div>
+    </header>
+
+    <!-- Filter Bar -->
+    <div class="container mx-auto px-6 mb-8">
+        <div class="bg-white p-4 rounded-xl shadow-sm border border-gray-100 flex flex-col md:flex-row justify-between items-center gap-4 reveal">
+            
+            <div class="relative w-full md:w-64">
+                <i data-lucide="search" class="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-400"></i>
+                <input type="text" id="searchInput" placeholder="Search products..." class="w-full pl-10 pr-4 py-2 border border-gray-200 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all">
+            </div>
+
+            <div class="flex gap-3 w-full md:w-auto overflow-x-auto pb-2 md:pb-0">
+                 <select id="priceFilter" class="px-4 py-2 border border-gray-200 rounded-lg bg-white text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 cursor-pointer hover:border-blue-400 transition-colors">
+                    <option value="all">All Prices</option>
+                    <option value="0-50">$0 - $50</option>
+                    <option value="50-100">$50 - $100</option>
+                    <option value="100-200">$100 - $200</option>
+                    <option value="200+">$200+</option>
+                </select>
+
+                <select id="sortFilter" class="px-4 py-2 border border-gray-200 rounded-lg bg-white text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 cursor-pointer hover:border-blue-400 transition-colors">
+                    <option value="default">Sort By</option>
+                    <option value="low-high">Price: Low → High</option>
+                    <option value="high-low">Price: High → Low</option>
+                </select>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <main class="container mx-auto px-6 pb-20">
+        <!-- Products Grid -->
+        <div id="products-list" class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-6 gap-6">
+            <!-- Products will be injected here by index.js -->
+        </div>
+
+        <!-- Pagination -->
+        <div class="flex justify-center items-center gap-2 mt-16 reveal">
+            <button class="p-2 rounded-lg border border-gray-200 text-gray-500 hover:bg-gray-50 hover:text-gray-900 transition-colors">
+                <i data-lucide="chevron-left" class="w-5 h-5"></i>
+            </button>
+            <button class="w-10 h-10 rounded-lg bg-blue-600 text-white font-medium flex items-center justify-center shadow-lg shadow-blue-200">1</button>
+            <button class="w-10 h-10 rounded-lg border border-gray-200 text-gray-600 font-medium flex items-center justify-center hover:bg-gray-50 hover:text-gray-900 transition-colors">2</button>
+            <span class="text-gray-400 px-2">...</span>
+            <button class="p-2 rounded-lg border border-gray-200 text-gray-500 hover:bg-gray-50 hover:text-gray-900 transition-colors">
+                <i data-lucide="chevron-right" class="w-5 h-5"></i>
+            </button>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-gray-300 py-12 border-t border-gray-800">
+        <div class="container mx-auto px-6 grid grid-cols-1 md:grid-cols-4 gap-8">
+            <div>
+                <h2 class="text-2xl font-bold text-white mb-4 flex items-center gap-2">
+                    <i data-lucide="shopping-bag" class="w-6 h-6 text-blue-500"></i> LuxeStore
+                </h2>
+                <p class="text-gray-400 text-sm leading-relaxed">
+                    Premium products designed for your modern lifestyle. Quality and satisfaction guaranteed.
+                </p>
+            </div>
+            <div>
+                <h3 class="text-white font-semibold mb-4">Quick Links</h3>
+                <ul class="space-y-2 text-sm">
+                    <li><a href="#" class="hover:text-blue-400 transition-colors">Home</a></li>
+                    <li><a href="#" class="hover:text-blue-400 transition-colors">Shop</a></li>
+                    <li><a href="#" class="hover:text-blue-400 transition-colors">About Us</a></li>
+                    <li><a href="#" class="hover:text-blue-400 transition-colors">Contact</a></li>
+                </ul>
+            </div>
+            <div>
+                <h3 class="text-white font-semibold mb-4">Contact Us</h3>
+                <ul class="space-y-3 text-sm">
+                    <li class="flex items-center gap-3"><i data-lucide="map-pin" class="w-4 h-4 text-blue-500"></i> New York, NY</li>
+                    <li class="flex items-center gap-3"><i data-lucide="phone" class="w-4 h-4 text-blue-500"></i> +1 (555) 123-4567</li>
+                    <li class="flex items-center gap-3"><i data-lucide="mail" class="w-4 h-4 text-blue-500"></i> support@luxestore.com</li>
+                </ul>
+            </div>
+            <div>
+                <h3 class="text-white font-semibold mb-4">Stay Updated</h3>
+                <div class="flex flex-col gap-3">
+                    <input type="email" placeholder="Enter your email" class="bg-gray-800 border border-gray-700 text-white px-4 py-2 rounded-lg focus:outline-none focus:border-blue-500 text-sm transition-colors">
+                    <button class="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-lg text-sm font-medium transition-colors">Subscribe</button>
+                </div>
+            </div>
+        </div>
+        <div class="container mx-auto px-6 pt-8 mt-8 border-t border-gray-800 text-center text-sm text-gray-500">
+            &copy; 2025 LuxeStore. All rights reserved.
+        </div>
+    </footer>
+
+    <!-- Toast Notification -->
+    <div id="toast" class="fixed bottom-6 right-6 bg-gray-900 text-white px-6 py-3 rounded-lg shadow-xl flex items-center gap-3 transform translate-y-20 opacity-0 transition-all duration-300 z-50 pointer-events-none">
+        <i data-lucide="check-circle" class="text-green-400 w-5 h-5"></i>
+        <p class="font-medium text-sm">Item added to cart</p>
+    </div>
+
+    <!-- Main JS -->
+    <script src="/js/index.js"></script>
+    <script src="/js/products.js"></script>
+</body>
+</html>

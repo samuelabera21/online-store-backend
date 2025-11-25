@@ -1,10 +1,10 @@
-<!DOCTYPE html>
+<!-- <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>Shipping Details | Checkout</title>
-  <!-- <link rel="stylesheet" href="/css/style.css" /> -->
+ 
   <link rel="stylesheet" href="/css/pages/shipping.css" />
 </head>
 <body>
@@ -53,5 +53,198 @@
   </main>
 
   <script src="/js/shipping.js"></script>
+</body>
+</html> -->
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Shipping Details | LuxeMarket</title>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            fontFamily: {
+              sans: ['Inter', 'sans-serif'],
+              display: ['Poppins', 'sans-serif'],
+            },
+            colors: {
+              primary: '#007bff',
+              secondary: '#f8f9fb',
+              dark: '#333333',
+              success: '#10b981',
+              error: '#ef4444',
+            }
+          }
+        }
+      }
+    </script>
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/css/pages/shipping.css">
+    
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+</head>
+<body class="bg-secondary text-dark antialiased min-h-screen flex flex-col">
+
+    <!-- Navbar (Simplified for Checkout) -->
+    <header class="bg-white/80 backdrop-blur-md border-b border-gray-100 sticky top-0 z-40">
+        <div class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <a href="/index.html" class="flex items-center gap-2 text-xl font-display font-bold text-primary">
+                <i data-lucide="shopping-bag" class="w-6 h-6"></i>
+                <span>LuxeMarket</span>
+            </a>
+            <nav class="hidden md:flex items-center gap-6 text-sm font-medium text-gray-600">
+                <a href="/index.html" class="hover:text-primary transition-colors">Home</a>
+                <a href="/cart.html" class="hover:text-primary transition-colors">Cart</a>
+                <a href="/profile.html" class="hover:text-primary transition-colors">Profile</a>
+                <a href="#" id="logout-btn" class="hover:text-error transition-colors">Logout</a>
+            </nav>
+            <!-- Mobile Menu Button placeholder -->
+            <button class="md:hidden text-gray-600">
+                <i data-lucide="menu" class="w-6 h-6"></i>
+            </button>
+        </div>
+    </header>
+
+    <main class="flex-grow flex items-center justify-center py-12 px-4 sm:px-6">
+        <div class="w-full max-w-2xl">
+            
+            <!-- Progress Steps -->
+            <div class="flex items-center justify-center mb-10 reveal">
+                <div class="flex items-center">
+                    <div class="w-8 h-8 rounded-full bg-green-500 text-white flex items-center justify-center text-sm font-bold shadow-md shadow-green-200">
+                        <i data-lucide="check" class="w-4 h-4"></i>
+                    </div>
+                    <span class="ml-2 text-sm font-medium text-gray-600 hidden sm:block">Cart</span>
+                </div>
+                <div class="w-12 h-1 bg-gray-200 mx-2 sm:mx-4 rounded-full"></div>
+                <div class="flex items-center">
+                    <div class="w-8 h-8 rounded-full bg-primary text-white flex items-center justify-center text-sm font-bold shadow-md shadow-blue-200 ring-4 ring-blue-50">
+                        2
+                    </div>
+                    <span class="ml-2 text-sm font-bold text-primary hidden sm:block">Shipping</span>
+                </div>
+                <div class="w-12 h-1 bg-gray-200 mx-2 sm:mx-4 rounded-full"></div>
+                <div class="flex items-center">
+                    <div class="w-8 h-8 rounded-full bg-gray-200 text-gray-500 flex items-center justify-center text-sm font-bold">
+                        3
+                    </div>
+                    <span class="ml-2 text-sm font-medium text-gray-400 hidden sm:block">Payment</span>
+                </div>
+            </div>
+
+            <!-- Form Card -->
+            <div class="bg-white rounded-2xl shadow-xl shadow-gray-200/50 overflow-hidden border border-gray-100 reveal delay-100">
+                <div class="p-8 md:p-10">
+                    <div class="flex items-center gap-3 mb-8">
+                        <div class="p-3 bg-blue-50 text-primary rounded-xl">
+                            <i data-lucide="map-pin" class="w-6 h-6"></i>
+                        </div>
+                        <div>
+                            <h1 class="text-2xl font-display font-bold text-gray-800">Shipping Details</h1>
+                            <p class="text-sm text-gray-500">Where should we send your order?</p>
+                        </div>
+                    </div>
+
+                    <form id="shippingForm" class="space-y-6" novalidate>
+                        
+                        <!-- Full Name & Email -->
+                        <div class="grid md:grid-cols-2 gap-6">
+                            <div class="relative group">
+                                <input type="text" id="fullName" class="floating-input peer" placeholder=" " required />
+                                <label for="fullName" class="floating-label">Full Name</label>
+                                <span class="error-msg hidden text-xs text-error mt-1 ml-1">Full name is required</span>
+                            </div>
+
+                            <div class="relative group">
+                                <input type="email" id="email" class="floating-input peer bg-gray-50 cursor-not-allowed text-gray-500" placeholder=" " readonly />
+                                <label for="email" class="floating-label text-gray-400">Email Address</label>
+                            </div>
+                        </div>
+
+                        <!-- Phone -->
+                        <div class="relative group">
+                            <div class="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none text-gray-400">
+                                <i data-lucide="phone" class="w-4 h-4"></i>
+                            </div>
+                            <input type="tel" id="phone" class="floating-input peer pl-11" placeholder=" " required />
+                            <label for="phone" class="floating-label left-11 peer-placeholder-shown:left-11 peer-focus:left-0">Phone Number</label>
+                            <span class="error-msg hidden text-xs text-error mt-1 ml-1">Valid phone number required (+251...)</span>
+                        </div>
+
+                        <!-- Address -->
+                        <div class="relative group">
+                            <input type="text" id="address" class="floating-input peer" placeholder=" " required />
+                            <label for="address" class="floating-label">Street Address</label>
+                            <span class="error-msg hidden text-xs text-error mt-1 ml-1">Street address is required</span>
+                        </div>
+
+                        <!-- Country & City -->
+                        <div class="grid md:grid-cols-2 gap-6">
+                            <div class="relative group">
+                                <input type="text" id="country" class="floating-input peer" placeholder=" " required />
+                                <label for="country" class="floating-label">Country</label>
+                                <span class="error-msg hidden text-xs text-error mt-1 ml-1">Country is required</span>
+                            </div>
+                            <div class="relative group">
+                                <input type="text" id="city" class="floating-input peer" placeholder=" " required />
+                                <label for="city" class="floating-label">City</label>
+                                <span class="error-msg hidden text-xs text-error mt-1 ml-1">City is required</span>
+                            </div>
+                        </div>
+
+                        <!-- Postal Code -->
+                        <div class="relative group w-1/2 pr-3">
+                            <input type="text" id="postal" class="floating-input peer" placeholder=" " required />
+                            <label for="postal" class="floating-label">Zip / Postal Code</label>
+                            <span class="error-msg hidden text-xs text-error mt-1 ml-1">Postal code is required</span>
+                        </div>
+
+                        <!-- Actions -->
+                        <div class="pt-6 flex flex-col-reverse md:flex-row items-center justify-between gap-4">
+                            <a href="/cart.html" class="text-sm font-medium text-gray-500 hover:text-dark flex items-center gap-2 transition-colors">
+                                <i data-lucide="arrow-left" class="w-4 h-4"></i> Back to Cart
+                            </a>
+                            <button type="submit" id="submitBtn" class="w-full md:w-auto bg-primary text-white px-8 py-3.5 rounded-full font-semibold shadow-lg shadow-blue-500/30 hover:bg-blue-600 hover:scale-[1.02] active:scale-[0.98] transition-all flex items-center justify-center gap-2 disabled:opacity-70 disabled:cursor-not-allowed">
+                                <span>Continue to Payment</span>
+                                <i data-lucide="arrow-right" class="w-5 h-5 btn-icon"></i>
+                                <!-- Spinner (Hidden by default) -->
+                                <svg class="spinner hidden w-5 h-5 animate-spin text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                                    <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+                                    <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                                </svg>
+                            </button>
+                        </div>
+                    </form>
+                </div>
+                <!-- Card Footer decorative line -->
+                <div class="h-1 w-full bg-gradient-to-r from-blue-400 via-primary to-blue-600"></div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Toast Notification Container -->
+    <div id="toast-container" class="fixed bottom-5 right-5 z-50 flex flex-col gap-3 pointer-events-none"></div>
+
+    <script src="/js/shipping.js"></script>
+    <script>
+        // Init Icons
+        lucide.createIcons();
+    </script>
 </body>
 </html>

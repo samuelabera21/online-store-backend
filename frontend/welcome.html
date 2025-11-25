@@ -1,0 +1,570 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>LuxeMarket | Welcome</title>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/css/welcome.css">
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            fontFamily: {
+              sans: ['Inter', 'sans-serif'],
+              display: ['Poppins', 'sans-serif'],
+            },
+            colors: {
+              primary: '#007bff',
+              secondary: '#f7f7f7',
+              dark: '#333333',
+            }
+          }
+        }
+      }
+    </script>
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/css/welcome.css">
+    
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+</head>
+<body class="bg-gray-50 text-dark antialiased">
+
+    <!-- 1. Responsive Navbar -->
+    <nav id="navbar" class="fixed w-full z-50 transition-all duration-300 py-6 bg-transparent">
+        <div class="container mx-auto px-6 flex justify-between items-center">
+            <!-- Logo -->
+            <a href="welcome.html" class="flex items-center gap-2 text-2xl font-display font-bold text-primary">
+                <i data-lucide="shopping-bag" class="w-8 h-8"></i>
+                <span>LuxeMarket</span>
+            </a>
+
+            <!-- Desktop Navigation -->
+            <div class="hidden md:flex items-center gap-8">
+                <a href="#home" class="text-sm font-medium text-primary transition-colors">Home</a>
+                <a href="login.html" class="text-sm font-medium text-gray-600 hover:text-primary transition-colors">Shop</a>
+                <a href="#about" class="text-sm font-medium text-gray-600 hover:text-primary transition-colors">About</a>
+                <a href="#contact" class="text-sm font-medium text-gray-600 hover:text-primary transition-colors">Contact</a>
+            </div>
+
+            <!-- Desktop Actions -->
+            <div class="hidden md:flex items-center gap-4" id="guest-actions">
+                <a href="login.html" class="text-sm font-medium text-gray-700 hover:text-primary transition-colors">Login</a>
+                <a href="register.html" class="bg-primary text-white px-5 py-2 rounded-full text-sm font-medium hover:bg-blue-600 transition-all shadow-lg shadow-blue-500/30">
+                    Register
+                </a>
+            </div>
+
+            <!-- Mobile Menu Button -->
+            <button id="menu-btn" class="md:hidden text-gray-700 focus:outline-none">
+                <i data-lucide="menu" class="w-6 h-6"></i>
+            </button>
+        </div>
+
+        <!-- Mobile Menu Dropdown -->
+        <div id="mobile-menu" class="md:hidden bg-white border-t">
+            <div class="flex flex-col p-6 gap-4">
+                <a href="#home" class="text-lg font-medium text-primary">Home</a>
+                <a href="login.html" class="text-lg font-medium text-gray-700 hover:text-primary">Shop</a>
+                <a href="#about" class="text-lg font-medium text-gray-700 hover:text-primary">About</a>
+                <a href="#contact" class="text-lg font-medium text-gray-700 hover:text-primary">Contact</a>
+                <hr class="my-2" />
+                <div class="flex flex-col gap-3">
+                    <a href="login.html" class="w-full py-3 rounded-lg border border-gray-200 text-gray-700 font-medium text-center">Login</a>
+                    <a href="register.html" class="w-full py-3 rounded-lg bg-primary text-white font-medium shadow-md text-center">Register</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- 2. Hero Section -->
+    <section id="home" class="relative min-h-screen flex items-center pt-20 overflow-hidden bg-secondary">
+        <!-- Background Elements -->
+        <div class="absolute top-0 right-0 w-1/2 h-full bg-gradient-to-l from-blue-100/50 to-transparent -z-10"></div>
+        <div class="absolute -bottom-20 -left-20 w-96 h-96 bg-primary/10 rounded-full blur-3xl -z-10"></div>
+
+        <div class="container mx-auto px-6 grid md:grid-cols-2 gap-12 items-center">
+            <!-- Text Content -->
+            <div class="space-y-6 reveal">
+                <div class="inline-block px-4 py-2 bg-blue-100 text-primary rounded-full text-sm font-semibold tracking-wide">
+                    New Summer Collection 2025
+                </div>
+                <h1 class="text-4xl md:text-6xl font-display font-bold leading-tight text-dark">
+                    Discover Style That <br />
+                    <span class="text-transparent bg-clip-text bg-gradient-to-r from-primary to-blue-400">Defines You.</span>
+                </h1>
+                <p class="text-lg text-gray-600 max-w-lg leading-relaxed">
+                    Experience the best in fashion, electronics, and lifestyle products. 
+                    Curated collections for the modern shopper with 24/7 support.
+                </p>
+                <div class="flex flex-col sm:flex-row gap-4 pt-4">
+                    <a href="login.html" class="flex items-center justify-center gap-2 bg-primary text-white px-8 py-4 rounded-full font-semibold hover:bg-blue-600 transition-all shadow-xl shadow-blue-500/20 group">
+                        Start Shopping
+                        <i data-lucide="arrow-right" class="w-5 h-5 group-hover:translate-x-1 transition-transform"></i>
+                    </a>
+                    <a href="#products" class="flex items-center justify-center px-8 py-4 rounded-full font-semibold text-gray-700 border border-gray-300 hover:bg-white hover:border-gray-400 transition-all">
+                        View Categories
+                    </a>
+                </div>
+            </div>
+
+            <!-- Hero Image -->
+            <div class="relative hidden md:block reveal delay-200">
+                <div class="relative z-10 rounded-3xl overflow-hidden shadow-2xl transform rotate-2 hover:rotate-0 transition-transform duration-500">
+                    <img src="https://picsum.photos/seed/hero1/600/700" alt="Fashion Model" class="w-full h-full object-cover">
+                </div>
+                <!-- Floating Decorative Card -->
+                <div class="absolute top-10 -left-10 bg-white p-4 rounded-xl shadow-xl z-20 max-w-xs animate-float">
+                    <div class="flex items-center gap-3">
+                        <div class="w-10 h-10 bg-green-100 rounded-full flex items-center justify-center text-green-600 font-bold">%</div>
+                        <div>
+                            <p class="text-sm font-bold text-gray-800">Special Offer</p>
+                            <p class="text-xs text-gray-500">Save 20% on first order</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 3. Featured Categories Section -->
+    <section id="categories" class="py-20 bg-white">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16 reveal">
+                <h2 class="text-3xl md:text-4xl font-display font-bold text-dark mb-4">Shop by Category</h2>
+                <div class="w-20 h-1 bg-primary mx-auto rounded-full"></div>
+                <p class="text-gray-500 mt-4">Browse our wide selection of premium products</p>
+            </div>
+
+            <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-6">
+                <!-- Category 1 -->
+                <a href="index.html" class="group block h-full reveal delay-100">
+                    <div class="bg-gray-50 rounded-2xl p-6 h-full flex flex-col items-center justify-center text-center transition-all duration-300 hover:shadow-xl hover:-translate-y-2 border border-transparent hover:border-blue-100">
+                        <div class="w-16 h-16 bg-white rounded-full shadow-sm flex items-center justify-center mb-4 text-primary group-hover:bg-primary group-hover:text-white transition-colors duration-300">
+                            <i data-lucide="smartphone" class="w-8 h-8"></i>
+                        </div>
+                        <h3 class="font-semibold text-gray-800 group-hover:text-primary transition-colors">Electronics</h3>
+                    </div>
+                </a>
+                <!-- Category 2 -->
+                <a href="index.html" class="group block h-full reveal delay-200">
+                    <div class="bg-gray-50 rounded-2xl p-6 h-full flex flex-col items-center justify-center text-center transition-all duration-300 hover:shadow-xl hover:-translate-y-2 border border-transparent hover:border-blue-100">
+                        <div class="w-16 h-16 bg-white rounded-full shadow-sm flex items-center justify-center mb-4 text-primary group-hover:bg-primary group-hover:text-white transition-colors duration-300">
+                            <i data-lucide="shirt" class="w-8 h-8"></i>
+                        </div>
+                        <h3 class="font-semibold text-gray-800 group-hover:text-primary transition-colors">Fashion</h3>
+                    </div>
+                </a>
+                <!-- Category 3 -->
+                <a href="index.html" class="group block h-full reveal delay-300">
+                    <div class="bg-gray-50 rounded-2xl p-6 h-full flex flex-col items-center justify-center text-center transition-all duration-300 hover:shadow-xl hover:-translate-y-2 border border-transparent hover:border-blue-100">
+                        <div class="w-16 h-16 bg-white rounded-full shadow-sm flex items-center justify-center mb-4 text-primary group-hover:bg-primary group-hover:text-white transition-colors duration-300">
+                            <i data-lucide="utensils" class="w-8 h-8"></i>
+                        </div>
+                        <h3 class="font-semibold text-gray-800 group-hover:text-primary transition-colors">Food</h3>
+                    </div>
+                </a>
+                <!-- Category 4 -->
+                <a href="index.html" class="group block h-full reveal delay-100">
+                    <div class="bg-gray-50 rounded-2xl p-6 h-full flex flex-col items-center justify-center text-center transition-all duration-300 hover:shadow-xl hover:-translate-y-2 border border-transparent hover:border-blue-100">
+                        <div class="w-16 h-16 bg-white rounded-full shadow-sm flex items-center justify-center mb-4 text-primary group-hover:bg-primary group-hover:text-white transition-colors duration-300">
+                            <i data-lucide="home" class="w-8 h-8"></i>
+                        </div>
+                        <h3 class="font-semibold text-gray-800 group-hover:text-primary transition-colors">Home</h3>
+                    </div>
+                </a>
+                <!-- Category 5 -->
+                <a href="index.html" class="group block h-full reveal delay-200">
+                    <div class="bg-gray-50 rounded-2xl p-6 h-full flex flex-col items-center justify-center text-center transition-all duration-300 hover:shadow-xl hover:-translate-y-2 border border-transparent hover:border-blue-100">
+                        <div class="w-16 h-16 bg-white rounded-full shadow-sm flex items-center justify-center mb-4 text-primary group-hover:bg-primary group-hover:text-white transition-colors duration-300">
+                            <i data-lucide="sparkles" class="w-8 h-8"></i>
+                        </div>
+                        <h3 class="font-semibold text-gray-800 group-hover:text-primary transition-colors">Beauty</h3>
+                    </div>
+                </a>
+                <!-- Category 6 -->
+                <a href="index.html" class="group block h-full reveal delay-300">
+                    <div class="bg-gray-50 rounded-2xl p-6 h-full flex flex-col items-center justify-center text-center transition-all duration-300 hover:shadow-xl hover:-translate-y-2 border border-transparent hover:border-blue-100">
+                        <div class="w-16 h-16 bg-white rounded-full shadow-sm flex items-center justify-center mb-4 text-primary group-hover:bg-primary group-hover:text-white transition-colors duration-300">
+                            <i data-lucide="dumbbell" class="w-8 h-8"></i>
+                        </div>
+                        <h3 class="font-semibold text-gray-800 group-hover:text-primary transition-colors">Sports</h3>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- 4. Featured Products Carousel -->
+    <section id="products" class="py-20 bg-gray-50">
+        <div class="container mx-auto px-6">
+            <div class="flex flex-col md:flex-row justify-between items-end mb-12 reveal">
+                <div>
+                    <h2 class="text-3xl md:text-4xl font-display font-bold text-dark mb-2">Trending Now</h2>
+                    <p class="text-gray-500">Top picks for you this week.</p>
+                </div>
+                <a href="index.html" class="text-primary font-semibold hover:underline mt-4 md:mt-0">View All Products &rarr;</a>
+            </div>
+
+            <!-- Carousel Container -->
+            <div id="product-carousel" class="flex overflow-x-auto pb-8 -mx-6 px-6 md:grid md:grid-cols-3 lg:grid-cols-4 md:overflow-visible md:pb-0 md:mx-0 md:px-0 gap-6 no-scrollbar snap-x snap-mandatory">
+                <!-- Product 1 -->
+                <div class="min-w-[280px] md:min-w-0 snap-center reveal delay-100">
+                    <div class="product-card bg-white rounded-2xl shadow-sm hover:shadow-xl transition-all duration-300 group overflow-hidden border border-gray-100 relative">
+                        <div class="relative aspect-square overflow-hidden bg-gray-100">
+                            <img src="https://picsum.photos/seed/p1/300/300" alt="Headphones" class="w-full h-full object-cover">
+                            <!-- Overlay -->
+                            <div class="overlay absolute inset-0 bg-black/40 flex items-center justify-center">
+                                <a href="login.html" class="bg-white text-dark px-6 py-2 rounded-full font-semibold hover:bg-primary hover:text-white transition-colors">
+                                    View Product
+                                </a>
+                            </div>
+                        </div>
+                        <div class="p-5">
+                            <div class="flex gap-1 mb-2">
+                                <i data-lucide="star" class="w-4 h-4 text-yellow-400 fill-yellow-400"></i>
+                                <i data-lucide="star" class="w-4 h-4 text-yellow-400 fill-yellow-400"></i>
+                                <i data-lucide="star" class="w-4 h-4 text-yellow-400 fill-yellow-400"></i>
+                                <i data-lucide="star" class="w-4 h-4 text-yellow-400 fill-yellow-400"></i>
+                                <i data-lucide="star" class="w-4 h-4 text-yellow-400 fill-yellow-400"></i>
+                            </div>
+                            <h3 class="font-semibold text-lg text-gray-800 mb-1 truncate">Wireless Headphones</h3>
+                            <div class="flex justify-between items-center mt-3">
+                                <span class="text-xl font-bold text-primary">$199.99</span>
+                                <button class="p-2 bg-gray-100 rounded-full text-gray-600 hover:bg-primary hover:text-white transition-colors">
+                                    <i data-lucide="shopping-cart" class="w-5 h-5"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Product 2 -->
+                <div class="min-w-[280px] md:min-w-0 snap-center reveal delay-200">
+                    <div class="product-card bg-white rounded-2xl shadow-sm hover:shadow-xl transition-all duration-300 group overflow-hidden border border-gray-100">
+                        <div class="relative aspect-square overflow-hidden bg-gray-100">
+                            <img src="https://picsum.photos/seed/p2/300/300" alt="Smart Watch" class="w-full h-full object-cover">
+                            <div class="overlay absolute inset-0 bg-black/40 flex items-center justify-center">
+                                <a href="login.html" class="bg-white text-dark px-6 py-2 rounded-full font-semibold hover:bg-primary hover:text-white transition-colors">View Product</a>
+                            </div>
+                        </div>
+                        <div class="p-5">
+                            <div class="flex gap-1 mb-2">
+                                <i data-lucide="star" class="w-4 h-4 text-yellow-400 fill-yellow-400"></i>
+                                <i data-lucide="star" class="w-4 h-4 text-yellow-400 fill-yellow-400"></i>
+                                <i data-lucide="star" class="w-4 h-4 text-yellow-400 fill-yellow-400"></i>
+                                <i data-lucide="star" class="w-4 h-4 text-yellow-400 fill-yellow-400"></i>
+                                <i data-lucide="star" class="w-4 h-4 text-gray-300"></i>
+                            </div>
+                            <h3 class="font-semibold text-lg text-gray-800 mb-1 truncate">Smart Watch Series 7</h3>
+                            <div class="flex justify-between items-center mt-3">
+                                <span class="text-xl font-bold text-primary">$349.50</span>
+                                <button class="p-2 bg-gray-100 rounded-full text-gray-600 hover:bg-primary hover:text-white transition-colors">
+                                    <i data-lucide="shopping-cart" class="w-5 h-5"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Product 3 -->
+                <div class="min-w-[280px] md:min-w-0 snap-center reveal delay-300">
+                    <div class="product-card bg-white rounded-2xl shadow-sm hover:shadow-xl transition-all duration-300 group overflow-hidden border border-gray-100">
+                        <div class="relative aspect-square overflow-hidden bg-gray-100">
+                            <img src="https://picsum.photos/seed/p3/300/300" alt="Coffee" class="w-full h-full object-cover">
+                            <div class="overlay absolute inset-0 bg-black/40 flex items-center justify-center">
+                                <a href="login.html" class="bg-white text-dark px-6 py-2 rounded-full font-semibold hover:bg-primary hover:text-white transition-colors">View Product</a>
+                            </div>
+                        </div>
+                        <div class="p-5">
+                            <div class="flex gap-1 mb-2">
+                                <i data-lucide="star" class="w-4 h-4 text-yellow-400 fill-yellow-400"></i>
+                                <i data-lucide="star" class="w-4 h-4 text-yellow-400 fill-yellow-400"></i>
+                                <i data-lucide="star" class="w-4 h-4 text-yellow-400 fill-yellow-400"></i>
+                                <i data-lucide="star" class="w-4 h-4 text-yellow-400 fill-yellow-400"></i>
+                                <i data-lucide="star" class="w-4 h-4 text-yellow-400 fill-yellow-400"></i>
+                            </div>
+                            <h3 class="font-semibold text-lg text-gray-800 mb-1 truncate">Organic Coffee Beans</h3>
+                            <div class="flex justify-between items-center mt-3">
+                                <span class="text-xl font-bold text-primary">$24.00</span>
+                                <button class="p-2 bg-gray-100 rounded-full text-gray-600 hover:bg-primary hover:text-white transition-colors">
+                                    <i data-lucide="shopping-cart" class="w-5 h-5"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Product 4 -->
+                <div class="min-w-[280px] md:min-w-0 snap-center reveal delay-100">
+                    <div class="product-card bg-white rounded-2xl shadow-sm hover:shadow-xl transition-all duration-300 group overflow-hidden border border-gray-100">
+                        <div class="relative aspect-square overflow-hidden bg-gray-100">
+                            <img src="https://picsum.photos/seed/p4/300/300" alt="Bag" class="w-full h-full object-cover">
+                            <div class="overlay absolute inset-0 bg-black/40 flex items-center justify-center">
+                                <a href="login.html" class="bg-white text-dark px-6 py-2 rounded-full font-semibold hover:bg-primary hover:text-white transition-colors">View Product</a>
+                            </div>
+                        </div>
+                        <div class="p-5">
+                            <div class="flex gap-1 mb-2">
+                                <i data-lucide="star" class="w-4 h-4 text-yellow-400 fill-yellow-400"></i>
+                                <i data-lucide="star" class="w-4 h-4 text-yellow-400 fill-yellow-400"></i>
+                                <i data-lucide="star" class="w-4 h-4 text-yellow-400 fill-yellow-400"></i>
+                                <i data-lucide="star" class="w-4 h-4 text-yellow-400 fill-yellow-400"></i>
+                                <i data-lucide="star" class="w-4 h-4 text-gray-300"></i>
+                            </div>
+                            <h3 class="font-semibold text-lg text-gray-800 mb-1 truncate">Leather Weekend Bag</h3>
+                            <div class="flex justify-between items-center mt-3">
+                                <span class="text-xl font-bold text-primary">$129.99</span>
+                                <button class="p-2 bg-gray-100 rounded-full text-gray-600 hover:bg-primary hover:text-white transition-colors">
+                                    <i data-lucide="shopping-cart" class="w-5 h-5"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 5. About Us Section -->
+    <section id="about" class="py-24 bg-dark text-white relative overflow-hidden">
+        <div class="absolute top-0 right-0 w-96 h-96 bg-primary opacity-10 rounded-full blur-[100px] transform translate-x-1/2 -translate-y-1/2"></div>
+        <div class="container mx-auto px-6 relative z-10 text-center max-w-4xl reveal">
+            <span class="text-primary font-semibold tracking-wider uppercase text-sm">About Our Story</span>
+            <h2 class="text-3xl md:text-5xl font-display font-bold mt-3 mb-8">Redefining the Online Shopping Experience</h2>
+            <p class="text-gray-300 text-lg mb-10 leading-relaxed">
+                Founded in 2024, LuxeMarket started with a simple mission: to make high-quality products accessible to everyone. 
+                We believe in transparency, sustainability, and exceptional customer service.
+            </p>
+            <div class="flex flex-wrap justify-center gap-6 md:gap-12">
+                <div class="flex items-center gap-2"><i data-lucide="check-circle" class="text-primary w-5 h-5"></i><span class="font-medium">100% Authentic</span></div>
+                <div class="flex items-center gap-2"><i data-lucide="check-circle" class="text-primary w-5 h-5"></i><span class="font-medium">Global Shipping</span></div>
+                <div class="flex items-center gap-2"><i data-lucide="check-circle" class="text-primary w-5 h-5"></i><span class="font-medium">Sustainable Sourcing</span></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 6. Why Choose Us -->
+    <section class="py-20 bg-white">
+        <div class="container mx-auto px-6">
+            <div class="grid lg:grid-cols-2 gap-16 items-center">
+                <div class="relative reveal">
+                    <div class="absolute -top-10 -left-10 w-20 h-20 bg-yellow-400 rounded-full opacity-20 blur-xl"></div>
+                    <div class="absolute bottom-10 right-10 w-32 h-32 bg-primary rounded-full opacity-20 blur-xl"></div>
+                    <img src="https://picsum.photos/seed/whyus/600/600" alt="Happy Customer" class="rounded-3xl shadow-2xl relative z-10 w-full object-cover h-[500px]">
+                    <div class="absolute bottom-8 left-8 right-8 bg-white/90 backdrop-blur-sm p-6 rounded-xl shadow-lg z-20 border border-white">
+                        <p class="font-display font-bold text-xl text-dark mb-2">"LuxeMarket changed how I shop online. Incredible quality!"</p>
+                        <div class="flex items-center gap-2">
+                            <div class="w-2 h-2 rounded-full bg-green-500"></div>
+                            <span class="text-sm text-gray-600">Verified Customer</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div>
+                    <div class="reveal">
+                        <h2 class="text-3xl md:text-4xl font-display font-bold text-dark mb-6">Why Choose Us?</h2>
+                        <p class="text-gray-600 mb-10 text-lg">We are dedicated to providing the best shopping experience possible.</p>
+                    </div>
+                    <div class="grid sm:grid-cols-2 gap-8">
+                        <!-- Feature 1 -->
+                        <div class="group p-6 rounded-2xl border border-gray-100 hover:border-blue-100 hover:shadow-lg transition-all duration-300 bg-gray-50 hover:bg-white reveal delay-100">
+                            <div class="w-12 h-12 bg-white rounded-xl shadow-sm flex items-center justify-center text-primary mb-4 group-hover:bg-primary group-hover:text-white transition-colors">
+                                <i data-lucide="truck" class="w-6 h-6"></i>
+                            </div>
+                            <h3 class="text-xl font-bold text-gray-800 mb-2">Fast Delivery</h3>
+                            <p class="text-gray-500 text-sm leading-relaxed">Get your orders delivered within 24 hours.</p>
+                        </div>
+                        <!-- Feature 2 -->
+                        <div class="group p-6 rounded-2xl border border-gray-100 hover:border-blue-100 hover:shadow-lg transition-all duration-300 bg-gray-50 hover:bg-white reveal delay-200">
+                            <div class="w-12 h-12 bg-white rounded-xl shadow-sm flex items-center justify-center text-primary mb-4 group-hover:bg-primary group-hover:text-white transition-colors">
+                                <i data-lucide="shield-check" class="w-6 h-6"></i>
+                            </div>
+                            <h3 class="text-xl font-bold text-gray-800 mb-2">Secure Payment</h3>
+                            <p class="text-gray-500 text-sm leading-relaxed">100% secure payment with advanced encryption.</p>
+                        </div>
+                        <!-- Feature 3 -->
+                        <div class="group p-6 rounded-2xl border border-gray-100 hover:border-blue-100 hover:shadow-lg transition-all duration-300 bg-gray-50 hover:bg-white reveal delay-300">
+                            <div class="w-12 h-12 bg-white rounded-xl shadow-sm flex items-center justify-center text-primary mb-4 group-hover:bg-primary group-hover:text-white transition-colors">
+                                <i data-lucide="headphones" class="w-6 h-6"></i>
+                            </div>
+                            <h3 class="text-xl font-bold text-gray-800 mb-2">24/7 Support</h3>
+                            <p class="text-gray-500 text-sm leading-relaxed">Our team is here to help you anytime.</p>
+                        </div>
+                        <!-- Feature 4 -->
+                        <div class="group p-6 rounded-2xl border border-gray-100 hover:border-blue-100 hover:shadow-lg transition-all duration-300 bg-gray-50 hover:bg-white reveal delay-100">
+                            <div class="w-12 h-12 bg-white rounded-xl shadow-sm flex items-center justify-center text-primary mb-4 group-hover:bg-primary group-hover:text-white transition-colors">
+                                <i data-lucide="zap" class="w-6 h-6"></i>
+                            </div>
+                            <h3 class="text-xl font-bold text-gray-800 mb-2">High Quality</h3>
+                            <p class="text-gray-500 text-sm leading-relaxed">We guarantee the best quality products.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 7. Testimonials Section -->
+    <section class="py-20 bg-secondary">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16 reveal">
+                <h2 class="text-3xl md:text-4xl font-display font-bold text-dark">What Our Customers Say</h2>
+            </div>
+            <div class="grid md:grid-cols-3 gap-8">
+                <!-- Testimonial 1 -->
+                <div class="bg-white p-8 rounded-2xl shadow-sm hover:shadow-md transition-shadow relative reveal delay-100">
+                    <i data-lucide="quote" class="absolute top-8 right-8 text-blue-100 w-10 h-10"></i>
+                    <div class="flex gap-1 mb-4">
+                        <i data-lucide="star" class="w-4 h-4 text-yellow-400 fill-yellow-400"></i>
+                        <i data-lucide="star" class="w-4 h-4 text-yellow-400 fill-yellow-400"></i>
+                        <i data-lucide="star" class="w-4 h-4 text-yellow-400 fill-yellow-400"></i>
+                        <i data-lucide="star" class="w-4 h-4 text-yellow-400 fill-yellow-400"></i>
+                        <i data-lucide="star" class="w-4 h-4 text-yellow-400 fill-yellow-400"></i>
+                    </div>
+                    <p class="text-gray-600 mb-6 italic">"Absolutely love the quality of the products! Fast shipping too."</p>
+                    <div class="flex items-center gap-3">
+                        <div class="w-10 h-10 bg-gray-200 rounded-full flex items-center justify-center font-bold text-gray-500">S</div>
+                        <div>
+                            <h4 class="font-bold text-gray-900 text-sm">Sarah Jenkins</h4>
+                            <span class="text-xs text-gray-400">Verified Buyer</span>
+                        </div>
+                    </div>
+                </div>
+                <!-- Testimonial 2 -->
+                <div class="bg-white p-8 rounded-2xl shadow-sm hover:shadow-md transition-shadow relative reveal delay-200">
+                    <i data-lucide="quote" class="absolute top-8 right-8 text-blue-100 w-10 h-10"></i>
+                    <div class="flex gap-1 mb-4">
+                        <i data-lucide="star" class="w-4 h-4 text-yellow-400 fill-yellow-400"></i>
+                        <i data-lucide="star" class="w-4 h-4 text-yellow-400 fill-yellow-400"></i>
+                        <i data-lucide="star" class="w-4 h-4 text-yellow-400 fill-yellow-400"></i>
+                        <i data-lucide="star" class="w-4 h-4 text-yellow-400 fill-yellow-400"></i>
+                        <i data-lucide="star" class="w-4 h-4 text-yellow-400 fill-yellow-400"></i>
+                    </div>
+                    <p class="text-gray-600 mb-6 italic">"Great customer service. They helped me find exactly what I needed."</p>
+                    <div class="flex items-center gap-3">
+                        <div class="w-10 h-10 bg-gray-200 rounded-full flex items-center justify-center font-bold text-gray-500">M</div>
+                        <div>
+                            <h4 class="font-bold text-gray-900 text-sm">Michael Chen</h4>
+                            <span class="text-xs text-gray-400">Verified Buyer</span>
+                        </div>
+                    </div>
+                </div>
+                <!-- Testimonial 3 -->
+                <div class="bg-white p-8 rounded-2xl shadow-sm hover:shadow-md transition-shadow relative reveal delay-300">
+                    <i data-lucide="quote" class="absolute top-8 right-8 text-blue-100 w-10 h-10"></i>
+                    <div class="flex gap-1 mb-4">
+                        <i data-lucide="star" class="w-4 h-4 text-yellow-400 fill-yellow-400"></i>
+                        <i data-lucide="star" class="w-4 h-4 text-yellow-400 fill-yellow-400"></i>
+                        <i data-lucide="star" class="w-4 h-4 text-yellow-400 fill-yellow-400"></i>
+                        <i data-lucide="star" class="w-4 h-4 text-yellow-400 fill-yellow-400"></i>
+                        <i data-lucide="star" class="w-4 h-4 text-gray-300"></i>
+                    </div>
+                    <p class="text-gray-600 mb-6 italic">"A seamless shopping experience from start to finish. Highly recommend."</p>
+                    <div class="flex items-center gap-3">
+                        <div class="w-10 h-10 bg-gray-200 rounded-full flex items-center justify-center font-bold text-gray-500">E</div>
+                        <div>
+                            <h4 class="font-bold text-gray-900 text-sm">Emma Watson</h4>
+                            <span class="text-xs text-gray-400">Verified Buyer</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 8. Newsletter Section -->
+    <section id="contact" class="py-20 bg-white">
+        <div class="container mx-auto px-6">
+            <div class="bg-primary rounded-3xl p-8 md:p-16 text-center text-white relative overflow-hidden shadow-2xl shadow-blue-500/30 reveal">
+                <!-- Background Pattern -->
+                <div class="absolute top-0 left-0 w-full h-full bg-[url('https://www.transparenttextures.com/patterns/cubes.png')] opacity-10"></div>
+                
+                <div class="relative z-10 max-w-2xl mx-auto">
+                    <h2 class="text-3xl md:text-4xl font-display font-bold mb-4">Subscribe to our Newsletter</h2>
+                    <p class="text-blue-100 mb-8">Get the latest updates, exclusive offers, and 15% off your first order straight to your inbox.</p>
+                    
+                    <form id="newsletter-form" class="flex flex-col sm:flex-row gap-4">
+                        <input id="newsletter-email" type="email" placeholder="Enter your email address" class="flex-1 px-6 py-4 rounded-full text-gray-800 focus:outline-none focus:ring-2 focus:ring-white/50 border-0">
+                        <button type="submit" class="bg-dark text-white px-8 py-4 rounded-full font-bold hover:bg-gray-900 transition-colors flex items-center justify-center gap-2">
+                            Subscribe <i data-lucide="send" class="w-4 h-4"></i>
+                        </button>
+                    </form>
+                    <p id="newsletter-msg"></p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 9. Footer -->
+    <footer class="bg-gray-900 text-gray-300 pt-16 pb-8 border-t border-gray-800">
+        <div class="container mx-auto px-6">
+            <div class="grid md:grid-cols-4 gap-12 mb-12">
+                <!-- Brand Info -->
+                <div>
+                    <div class="flex items-center gap-2 text-white font-display font-bold text-2xl mb-6">
+                        <i data-lucide="shopping-bag" class="w-6 h-6 text-primary"></i>
+                        <span>LuxeMarket</span>
+                    </div>
+                    <p class="text-sm leading-relaxed text-gray-400 mb-6">
+                        Your one-stop destination for premium products. Quality, trust, and style in every package.
+                    </p>
+                    <div class="flex gap-4">
+                        <a href="#" class="w-8 h-8 rounded-full bg-gray-800 flex items-center justify-center hover:bg-primary hover:text-white transition-all"><i data-lucide="facebook" class="w-4 h-4"></i></a>
+                        <a href="#" class="w-8 h-8 rounded-full bg-gray-800 flex items-center justify-center hover:bg-primary hover:text-white transition-all"><i data-lucide="twitter" class="w-4 h-4"></i></a>
+                        <a href="#" class="w-8 h-8 rounded-full bg-gray-800 flex items-center justify-center hover:bg-primary hover:text-white transition-all"><i data-lucide="instagram" class="w-4 h-4"></i></a>
+                        <a href="#" class="w-8 h-8 rounded-full bg-gray-800 flex items-center justify-center hover:bg-primary hover:text-white transition-all"><i data-lucide="linkedin" class="w-4 h-4"></i></a>
+                    </div>
+                </div>
+                <!-- Quick Links -->
+                <div>
+                    <h4 class="text-white font-bold mb-6">Quick Links</h4>
+                    <ul class="space-y-3 text-sm">
+                        <li><a href="#home" class="hover:text-primary transition-colors">Home</a></li>
+                        <li><a href="login.html" class="hover:text-primary transition-colors">Shop</a></li>
+                        <li><a href="#about" class="hover:text-primary transition-colors">About Us</a></li>
+                        <li><a href="register.html" class="hover:text-primary transition-colors">Login / Register</a></li>
+                    </ul>
+                </div>
+                <!-- Support -->
+                <div>
+                    <h4 class="text-white font-bold mb-6">Support</h4>
+                    <ul class="space-y-3 text-sm">
+                        <li><a href="#" class="hover:text-primary transition-colors">Contact Us</a></li>
+                        <li><a href="#" class="hover:text-primary transition-colors">FAQs</a></li>
+                        <li><a href="#" class="hover:text-primary transition-colors">Shipping Policy</a></li>
+                        <li><a href="#" class="hover:text-primary transition-colors">Returns & Refunds</a></li>
+                    </ul>
+                </div>
+                <!-- Contact -->
+                <div>
+                    <h4 class="text-white font-bold mb-6">Contact Us</h4>
+                    <ul class="space-y-4 text-sm">
+                        <li class="flex gap-3"><span class="text-gray-500">Addr:</span> 123 Market Street, Design City</li>
+                        <li class="flex gap-3"><span class="text-gray-500">Email:</span> support@luxemarket.com</li>
+                        <li class="flex gap-3"><span class="text-gray-500">Phone:</span> +1 (555) 123-4567</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="border-t border-gray-800 pt-8 flex flex-col md:flex-row justify-between items-center gap-4 text-xs text-gray-500">
+                <p>© 2025 LuxeMarket — All rights reserved.</p>
+                <div class="flex gap-6">
+                    <a href="#" class="hover:text-white">Privacy Policy</a>
+                    <a href="#" class="hover:text-white">Terms of Service</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Initialize Logic -->
+  <script src="/js/welcome.js"></script>
+</body>
+</html>

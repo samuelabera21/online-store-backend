@@ -36,6 +36,9 @@
 
 
 
+
+
+
 // const API_URL = "http://localhost:5000/api/auth";
 // const token = localStorage.getItem("token");
 
@@ -115,36 +118,14 @@
 // document.addEventListener("DOMContentLoaded", loadProfile);
 
 
-const API_URL = "http://localhost:5000/api/auth";
-const token = localStorage.getItem("token");
+// const API_URL = "http://localhost:5000/api/auth";
+// const token = localStorage.getItem("token");
 
-if (!token) {
-  window.location.href = "login.html";
-}
-
-// async function loadProfile() {
-//   try {
-//     const res = await fetch(`${API_URL}/me`, {
-//       headers: { Authorization: `Bearer ${token}` }
-//     });
-
-//     const data = await res.json();
-//     if (!res.ok) throw new Error(data.error);
-
-//     document.getElementById("user-name").textContent = data.name;
-//     document.getElementById("user-email").textContent = data.email;
-//     document.getElementById("user-date").textContent =
-//       new Date(data.created_at).toLocaleString();
-
-//   } catch (err) {
-//     alert("Error loading profile");
-//   }
+// if (!token) {
+//   window.location.href = "login.html";
 // }
 
-// document.getElementById("logout-btn").addEventListener("click", () => {
-//   localStorage.clear();
-//   window.location.href = "login.html";
-// });
+
 
 // async function loadProfile() {
 //   const res = await fetch(`${API_URL}/me`, {
@@ -162,46 +143,132 @@ if (!token) {
 //     new Date(user.created_at).toLocaleString();
 // }
 
+// // Upload avatar
+// document.getElementById("avatarForm").addEventListener("submit", async (e) => {
+//   e.preventDefault();
 
-async function loadProfile() {
-  const res = await fetch(`${API_URL}/me`, {
-    headers: { Authorization: `Bearer ${token}` }
-  });
+//   const file = document.getElementById("avatar").files[0];
+//   if (!file) return alert("Select an image!");
 
-  const user = await res.json();
+//   const formData = new FormData();
+//   formData.append("avatar", file);
 
-  document.getElementById("profile-avatar").src =
-    user.avatar ? `http://localhost:5000${user.avatar}` : "img/default-avatar.png";
+//   const res = await fetch(`${API_URL}/upload-avatar`, {
+//     method: "POST",
+//     headers: { Authorization: `Bearer ${token}` },
+//     body: formData,
+//   });
 
-  document.getElementById("user-name").textContent = user.name;
-  document.getElementById("user-email").textContent = user.email;
-  document.getElementById("user-date").textContent =
-    new Date(user.created_at).toLocaleString();
+//   const data = await res.json();
+
+//   if (!res.ok) return alert(data.error);
+
+//   alert("Profile picture updated!");
+
+//   loadProfile();
+// });
+
+// document.addEventListener("DOMContentLoaded", loadProfile);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// ---------------------- CONFIG -----------------------
+const API_URL = "http://localhost:5000/api/auth";
+const token = localStorage.getItem("token");
+
+// If no token → send user to login page
+if (!token) window.location.href = "login.html";
+
+// ---------------------- TOAST SYSTEM -----------------
+function showToast(message, type = "success") {
+  const toast = document.createElement("div");
+  toast.className = `toast toast-${type}`;
+  toast.innerText = message;
+
+  document.body.appendChild(toast);
+
+  setTimeout(() => {
+    toast.style.opacity = "0";
+    setTimeout(() => toast.remove(), 500);
+  }, 2500);
 }
 
-// Upload avatar
+// ---------------------- LOAD PROFILE -----------------
+async function loadProfile() {
+  try {
+    const res = await fetch(`${API_URL}/me`, {
+      headers: { Authorization: `Bearer ${token}` }
+    });
+
+    if (!res.ok) throw new Error("Unable to load profile data");
+
+    const user = await res.json();
+
+    document.getElementById("profile-avatar").src =
+      user.avatar ? `http://localhost:5000${user.avatar}` : "img/default-avatar.png";
+
+    document.getElementById("user-name").textContent = user.name || "Unknown User";
+    document.getElementById("user-email").textContent = user.email || "Not available";
+    document.getElementById("user-date").textContent =
+      "Member since " + new Date(user.created_at).toLocaleDateString();
+
+  } catch (err) {
+    console.error(err);
+    showToast("⚠ Failed to load user data", "error");
+  }
+}
+
+// ---------------------- UPLOAD AVATAR -----------------
 document.getElementById("avatarForm").addEventListener("submit", async (e) => {
   e.preventDefault();
 
   const file = document.getElementById("avatar").files[0];
-  if (!file) return alert("Select an image!");
+  if (!file) return showToast("Please select an image first!", "error");
 
   const formData = new FormData();
   formData.append("avatar", file);
 
-  const res = await fetch(`${API_URL}/upload-avatar`, {
-    method: "POST",
-    headers: { Authorization: `Bearer ${token}` },
-    body: formData,
-  });
+  try {
+    const res = await fetch(`${API_URL}/upload-avatar`, {
+      method: "POST",
+      headers: { Authorization: `Bearer ${token}` },
+      body: formData,
+    });
 
-  const data = await res.json();
+    const data = await res.json();
 
-  if (!res.ok) return alert(data.error);
+    if (!res.ok) throw new Error(data.error || "Upload failed");
 
-  alert("Profile picture updated!");
+    showToast("✔ Profile picture updated!");
 
-  loadProfile();
+    loadProfile();
+  } catch (err) {
+    console.error(err);
+    showToast("⚠ Upload failed", "error");
+  }
 });
 
+// ---------------------- LOGOUT ------------------------
+document.getElementById("logout-btn")?.addEventListener("click", () => {
+  localStorage.removeItem("token");
+  window.location.href = "login.html";
+});
+
+// Load profile automatically
 document.addEventListener("DOMContentLoaded", loadProfile);

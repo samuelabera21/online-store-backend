@@ -1,95 +1,100 @@
 /* ================================
-   SHIPPING PAGE STYLING
+   SHIPPING PAGE STYLING (Modernized)
 ================================ */
 
-body {
-  background: #f8f9fb;
-  font-family: "Segoe UI", Arial, sans-serif;
-  color: #333;
-}
-
-/* HEADER */
-header {
-  background: #ffffff;
-  padding: 20px;
-  border-bottom: 1px solid #ddd;
-}
-
-header h1 {
-  font-size: 26px;
-  font-weight: 600;
-  margin-bottom: 10px;
-}
-
-header nav a {
-  color: #0077ff;
-  text-decoration: none;
-  font-weight: 500;
-  margin-right: 10px;
-}
-header nav a:hover {
-  text-decoration: underline;
-}
-
-/* CONTAINER */
-.container {
-  background: #ffffff;
-  padding: 25px;
-  margin: 25px auto;
-  width: 95%;
-  max-width: 600px;
-  border-radius: 10px;
-  box-shadow: 0 3px 10px rgba(0,0,0,0.08);
-}
-
-.container h2 {
-  font-size: 22px;
-  margin-bottom: 15px;
-  font-weight: 600;
-}
-
-/* FORM */
-form label {
-  display: block;
-  margin-top: 15px;
-  margin-bottom: 5px;
-  font-weight: 500;
-}
-
-form input {
+/* Floating Input Base Styles */
+.floating-input {
   width: 100%;
-  padding: 10px;
-  border: 1px solid #ccc;
-  border-radius: 6px;
-  font-size: 15px;
-}
-form input:focus {
-  border-color: #007bff;
+  padding: 1rem 1rem 0.6rem 1rem;
+  font-size: 0.95rem;
+  color: #1f2937; /* text-gray-800 */
+  background-color: transparent;
+  border: 1px solid #e5e7eb; /* border-gray-200 */
+  border-radius: 0.75rem; /* rounded-xl */
+  transition: all 0.3s ease;
   outline: none;
 }
 
-/* BUTTONS */
-.btn {
-  padding: 10px 14px;
-  border-radius: 6px;
-  font-size: 15px;
-  border: none;
-  cursor: pointer;
+.floating-input:focus {
+  border-color: #007bff; /* primary */
+  box-shadow: 0 0 0 4px rgba(0, 123, 255, 0.1);
+}
+
+.floating-input.error {
+  border-color: #ef4444; /* error */
+  background-color: #fef2f2;
+}
+
+.floating-input.error:focus {
+  box-shadow: 0 0 0 4px rgba(239, 68, 68, 0.1);
+}
+
+/* Floating Label Logic */
+.floating-label {
+  position: absolute;
+  top: 1rem;
+  left: 1rem;
+  color: #9ca3af; /* text-gray-400 */
+  font-size: 0.95rem;
+  pointer-events: none;
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  transform-origin: top left;
+  background-color: white;
+  padding: 0 0.25rem;
+  line-height: 1;
+}
+
+/* Move label up when input is focused or not empty */
+.floating-input:focus ~ .floating-label,
+.floating-input:not(:placeholder-shown) ~ .floating-label {
+  transform: translateY(-1.4rem) scale(0.85);
+  color: #007bff; /* primary */
   font-weight: 500;
+  left: 0.8rem;
 }
 
-.btn-primary {
-  background: #007bff;
-  color: white;
-}
-.btn-primary:hover {
-  background: #0063d1;
+.floating-input.error ~ .floating-label {
+  color: #ef4444;
 }
 
-.btn-secondary {
-  background: #6c757d;
-  color: white;
+.floating-input.bg-gray-50 ~ .floating-label {
+  background-color: transparent; /* Readonly fields */
 }
-.btn-secondary:hover {
-  background: #5b636a;
+
+/* Reveal Animation (Consistent with Welcome page) */
+.reveal {
+  opacity: 0;
+  transform: translateY(20px);
+  animation: revealAnim 0.8s cubic-bezier(0.5, 0, 0, 1) forwards;
+}
+
+.delay-100 { animation-delay: 0.1s; }
+.delay-200 { animation-delay: 0.2s; }
+
+@keyframes revealAnim {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Toast Animation */
+@keyframes slideIn {
+  from { transform: translateX(100%); opacity: 0; }
+  to { transform: translateX(0); opacity: 1; }
+}
+@keyframes fadeOut {
+  from { opacity: 1; }
+  to { opacity: 0; }
+}
+
+.toast {
+  animation: slideIn 0.3s ease-out forwards;
+}
+.toast.hiding {
+  animation: fadeOut 0.3s ease-in forwards;
 }

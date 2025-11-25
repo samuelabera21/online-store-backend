@@ -1,87 +1,93 @@
-/* ===========================
-   PROFILE / EDIT PAGE STYLE
-=========================== */
-
-body {
-  background: #f5f7fb;
-  font-family: "Segoe UI", Arial, sans-serif;
+/* =====================================================
+   CORE & ANIMATIONS
+===================================================== */
+html {
+  scroll-behavior: smooth;
 }
 
-.header {
-  background: #fff;
-  padding: 15px 25px;
-  border-bottom: 1px solid #ddd;
+/* Animations matching Profile Page */
+.reveal {
+  opacity: 0;
+  transform: translateY(30px);
+  animation: revealAnim 0.8s cubic-bezier(0.5, 0, 0, 1) forwards;
 }
 
-.header h1 {
-  font-size: 26px;
-  font-weight: 600;
+@keyframes revealAnim {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
-.nav a {
-  margin-right: 12px;
-  text-decoration: none;
-  color: #007bff;
-  font-weight: 500;
-}
-
-.nav a:hover {
-  text-decoration: underline;
-}
-
-/* Container */
-.profile-container {
-  max-width: 420px;
-  margin: 40px auto;
-  background: #fff;
-  padding: 25px;
-  border-radius: 12px;
-  box-shadow: 0 2px 10px rgba(0,0,0,0.08);
-}
-
-.profile-container h2 {
-  margin-bottom: 20px;
-  font-size: 22px;
-  font-weight: 600;
-}
-
-/* Form */
-.profile-form {
-  display: flex;
-  flex-direction: column;
-}
-
-.profile-form label {
-  font-size: 14px;
-  margin-bottom: 6px;
-  color: #444;
-}
-
-.profile-form input {
-  padding: 10px 12px;
-  margin-bottom: 18px;
-  border: 1px solid #ccc;
-  border-radius: 6px;
-  font-size: 15px;
-}
-
-.profile-form input:focus {
-  border-color: #007bff;
-  outline: none;
-}
-
-/* Buttons */
-.btn-save {
-  background: #007bff;
+/* =====================================================
+   TOAST NOTIFICATIONS
+===================================================== */
+.toast {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  background: #28c76f; /* Success Green */
   color: #fff;
-  padding: 10px 14px;
-  border-radius: 6px;
-  font-size: 16px;
-  cursor: pointer;
-  border: none;
+  padding: 12px 18px;
+  border-radius: 10px;
+  font-size: 15px;
   font-weight: 600;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+  opacity: 1;
+  transition: opacity .5s, transform .3s;
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  animation: slideIn .3s ease-out;
 }
 
-.btn-save:hover {
-  background: #0063d1;
+.toast-error {
+  background: #ff4d4f; /* Error Red */
+}
+
+@keyframes slideIn {
+  from {
+    transform: translateX(60px);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+/* =====================================================
+   LOADING STATES
+===================================================== */
+.btn-loading {
+  pointer-events: none;
+  opacity: 0.8;
+}
+
+.btn-loading .btn-text,
+.btn-loading i {
+  display: none;
+}
+
+.btn-loading .spinner {
+  display: block !important;
+}
+
+/* =====================================================
+   UTILITIES
+===================================================== */
+input:-webkit-autofill,
+input:-webkit-autofill:hover, 
+input:-webkit-autofill:focus, 
+input:-webkit-autofill:active{
+    -webkit-box-shadow: 0 0 0 30px #f9fafb inset !important;
+    -webkit-text-fill-color: #333 !important;
+    transition: background-color 5000s ease-in-out 0s;
+}
+
+/* Focus styles for accessibility */
+button:focus-visible, a:focus-visible {
+  outline: 2px solid #007bff;
+  outline-offset: 2px;
 }

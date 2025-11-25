@@ -1,109 +1,77 @@
-/* ==========================
-   GLOBAL STYLES
-========================== */
-body {
-  font-family: "Segoe UI", Arial, sans-serif;
-  background: #f7f7f7;
-  color: #333;
-  margin: 0;
-  padding: 0;
-}
+/* ================================
+   ORDER CONFIRMATION STYLES
+================================ */
 
-/* ==========================
-   HEADER
-========================== */
-header {
-  background: #ffffff;
-  padding: 18px 24px;
-  border-bottom: 1px solid #ddd;
-}
-
-header h1 {
-  margin: 0 0 8px 0;
-  font-size: 26px;
-  font-weight: 600;
-}
-
-header nav a {
-  text-decoration: none;
-  margin-right: 10px;
-  color: #0077ff;
-  font-weight: 500;
-}
-
-header nav a:hover {
-  text-decoration: underline;
-}
-
-/* ==========================
-   MAIN CONTAINER
-========================== */
-.container {
-  max-width: 700px;
-  margin: 40px auto;
-  background: white;
-  padding: 25px 30px;
-  border-radius: 10px;
-  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.08);
-}
-
-.container h2 {
-  font-size: 24px;
-  margin-bottom: 10px;
-  font-weight: 600;
-  text-align: center;
-}
-
-#confirmation {
-  margin-top: 20px;
-  font-size: 16px;
-  line-height: 1.6;
-}
-
-#confirmation p {
-  margin-bottom: 8px;
-}
-
-#confirmation strong {
-  color: #111;
-}
-
-/* ==========================
-   BUTTONS
-========================== */
-.btn {
-  display: inline-block;
-  padding: 10px 16px;
-  border-radius: 6px;
-  background: #007bff;
-  color: #fff;
-  text-decoration: none;
-  margin-right: 10px;
-  font-weight: 500;
-  transition: 0.2s ease;
-}
-
-.btn:hover {
-  background: #005fcc;
-}
-
-.btn-secondary {
-  background: #6c757d;
-}
-
-.btn-secondary:hover {
-  background: #555e65;
-}
-
-/* ==========================
-   SUCCESS BADGE
-========================== */
-.success-box {
-  background: #e6f7e9;
-  border: 1px solid #9cd9a7;
-  padding: 12px 16px;
-  border-radius: 8px;
-  margin-bottom: 20px;
-  color: #2a6b37;
-  font-weight: 600;
-}
+/* Reveal Animations (Consistent with Shipping) */
+.reveal {
+    opacity: 0;
+    transform: translateY(20px);
+    animation: revealAnim 0.8s cubic-bezier(0.5, 0, 0, 1) forwards;
+  }
+  
+  .delay-100 { animation-delay: 0.1s; }
+  .delay-200 { animation-delay: 0.2s; }
+  .delay-300 { animation-delay: 0.3s; }
+  
+  @keyframes revealAnim {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  /* Receipt Styling */
+  .receipt-header {
+      background: linear-gradient(to right, #f8f9fb, #ffffff);
+      border-bottom: 1px dashed #e5e7eb;
+  }
+  
+  .info-label {
+      font-size: 0.8rem;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: #9ca3af; /* text-gray-400 */
+      font-weight: 600;
+      margin-bottom: 0.25rem;
+  }
+  
+  .info-value {
+      color: #1f2937; /* text-gray-800 */
+      font-weight: 500;
+  }
+  
+  /* Toast Notification */
+  @keyframes slideInRight {
+    from { transform: translateX(100%); opacity: 0; }
+    to { transform: translateX(0); opacity: 1; }
+  }
+  @keyframes fadeOutRight {
+    from { opacity: 1; transform: translateX(0); }
+    to { opacity: 0; transform: translateX(100%); }
+  }
+  
+  .toast {
+    animation: slideInRight 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  }
+  .toast.hiding {
+    animation: fadeOutRight 0.4s ease-in forwards;
+  }
+  
+  /* Custom Scrollbar for receipt items if they get too long */
+  .custom-scrollbar::-webkit-scrollbar {
+    width: 6px;
+  }
+  .custom-scrollbar::-webkit-scrollbar-track {
+    background: #f1f1f1;
+  }
+  .custom-scrollbar::-webkit-scrollbar-thumb {
+    background: #d1d5db;
+    border-radius: 10px;
+  }
+  .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+    background: #9ca3af;
+  }

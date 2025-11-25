@@ -1,18 +1,16 @@
-/* ======================
-   Orders Page Styling
-====================== */
-body {
+/* 
+ body {
   background: #f4f4f4;
 }
 
-/* Container for all orders */
+
 .orders-list {
   width: 90%;
   max-width: 900px;
   margin: 25px auto;
 }
 
-/* Single order card */
+
 .order-card {
   background: #fff;
   padding: 18px;
@@ -60,4 +58,77 @@ body {
   padding: 20px;
   font-size: 16px;
   color: #555;
+} 
+
+
+
+ */
+
+
+
+
+
+
+  */
+/* Base settings from Welcome Page */
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: 'Inter', sans-serif;
+  overflow-x: hidden;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Poppins', sans-serif;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+::-webkit-scrollbar-thumb {
+  background: #cbd5e1;
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #94a3b8;
+}
+
+/* Animation Utilities */
+.reveal {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: all 0.8s cubic-bezier(0.5, 0, 0, 1);
+}
+
+.reveal.active {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Navbar Transition States */
+.nav-scrolled {
+  background-color: rgba(255, 255, 255, 0.9) !important;
+  backdrop-filter: blur(10px);
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+  padding-top: 1rem !important;
+  padding-bottom: 1rem !important;
+}
+
+/* Mobile Menu Animation */
+#mobile-menu {
+  transition: max-height 0.3s ease-in-out, opacity 0.3s ease-in-out;
+  max-height: 0;
+  opacity: 0;
+  overflow: hidden;
+}
+
+#mobile-menu.open {
+  max-height: 400px;
+  opacity: 1;
 }

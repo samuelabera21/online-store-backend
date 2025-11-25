@@ -1,123 +1,115 @@
-/* ==========================
+/* ================================
    PAYMENT PAGE STYLING
-========================== */
-body {
-  background: #f5f7fa;
-  font-family: "Segoe UI", sans-serif;
-}
+================================ */
 
-.header {
-  background: #fff;
-  padding: 15px 20px;
-  border-bottom: 1px solid #ddd;
-}
-
-.header h1 {
-  margin-bottom: 10px;
-}
-
-.nav a {
-  margin-right: 12px;
-  color: #007bff;
-  text-decoration: none;
-}
-
-.nav a:hover {
-  text-decoration: underline;
-}
-
-/* Container */
-.checkout-container {
-  width: 90%;
-  max-width: 600px;
-  margin: 35px auto;
-  background: #fff;
-  border-radius: 10px;
-  padding: 25px;
-  box-shadow: 0 3px 12px rgba(0,0,0,0.08);
-}
-
-.section-title {
-  font-size: 22px;
-  margin-bottom: 15px;
-}
-
-.shipping-summary {
-  background: #f1f5ff;
-  padding: 12px;
-  border-radius: 8px;
-  margin-bottom: 20px;
-}
-
-.sub-title {
-  margin-top: 20px;
-  font-size: 18px;
-  margin-bottom: 10px;
-}
-
-/* Payment options */
-.pay-option {
-  display: block;
-  background: #fafafa;
-  padding: 12px;
-  border-radius: 8px;
-  margin-bottom: 10px;
-  border: 1px solid #ddd;
-  cursor: pointer;
-}
-
-.pay-option:hover {
-  background: #f0f6ff;
-}
-
-/* Card fields */
-.card-fields {
-  display: none;
-  background: #eef4ff;
-  padding: 15px;
-  border-radius: 8px;
-  margin-top: 12px;
-}
-
-.card-fields input {
+/* Floating Input Base Styles (Matches Shipping Page) */
+.floating-input {
   width: 100%;
-  padding: 10px;
-  margin-bottom: 10px;
-  border-radius: 6px;
-  border: 1px solid #bbb;
+  padding: 1rem 1rem 0.6rem 1rem;
+  font-size: 0.95rem;
+  color: #1f2937; /* text-gray-800 */
+  background-color: white;
+  border: 1px solid #e5e7eb; /* border-gray-200 */
+  border-radius: 0.75rem; /* rounded-xl */
+  transition: all 0.3s ease;
+  outline: none;
 }
 
-.demo-hint {
-  font-size: 12px;
-  color: #666;
+.floating-input:focus {
+  border-color: #007bff; /* primary */
+  box-shadow: 0 0 0 4px rgba(0, 123, 255, 0.1);
 }
 
-/* Buttons */
-.buttons {
-  margin-top: 15px;
-  display: flex;
-  gap: 10px;
+.floating-input.error {
+  border-color: #ef4444; /* error */
+  background-color: #fef2f2;
 }
 
-.btn {
-  padding: 10px 15px;
-  border-radius: 6px;
-  border: none;
-  cursor: pointer;
-  font-size: 15px;
+.floating-input.error:focus {
+  box-shadow: 0 0 0 4px rgba(239, 68, 68, 0.1);
 }
 
-.btn-primary {
-  background: #007bff;
-  color: white;
+/* Floating Label Logic */
+.floating-label {
+  position: absolute;
+  top: 1rem;
+  left: 1rem;
+  color: #9ca3af; /* text-gray-400 */
+  font-size: 0.95rem;
+  pointer-events: none;
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  transform-origin: top left;
+  background-color: transparent; /* Changed to transparent for inside card fields */
+  padding: 0 0.25rem;
+  line-height: 1;
 }
 
-.btn-secondary {
-  background: #6c757d;
-  color: white;
+/* Specific fix for labels inside the gray card box to look right */
+#cardFields .floating-label {
+    background-color: #f9fafb; /* Matches bg-gray-50 */
 }
 
-.checkout-msg {
-  margin-top: 15px;
-  font-size: 14px;
+/* Move label up when input is focused or not empty */
+.floating-input:focus ~ .floating-label,
+.floating-input:not(:placeholder-shown) ~ .floating-label {
+  transform: translateY(-1.4rem) scale(0.85);
+  color: #007bff; /* primary */
+  font-weight: 500;
+  left: 0.8rem;
 }
+
+.floating-input.error ~ .floating-label {
+  color: #ef4444;
+}
+
+/* Reveal Animation */
+.reveal {
+  opacity: 0;
+  transform: translateY(20px);
+  animation: revealAnim 0.8s cubic-bezier(0.5, 0, 0, 1) forwards;
+}
+
+.delay-100 { animation-delay: 0.1s; }
+
+@keyframes revealAnim {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Toast Animation */
+@keyframes slideIn {
+  from { transform: translateX(100%); opacity: 0; }
+  to { transform: translateX(0); opacity: 1; }
+}
+@keyframes fadeOut {
+  from { opacity: 1; }
+  to { opacity: 0; }
+}
+
+.toast {
+  animation: slideIn 0.3s ease-out forwards;
+}
+.toast.hiding {
+  animation: fadeOut 0.3s ease-in forwards;
+}
+
+/* Card Fields Expansion Animation */
+#cardFields.hidden {
+    display: none;
+}
+
+/* Smooth expansion requires max-height transition in CSS or JS toggling classes, 
+   but since we use the 'hidden' utility which applies display:none, 
+   CSS transitions won't work directly on display. 
+   We will rely on JS adding/removing 'hidden' and handling the slide effect if needed,
+   or just simple show/hide as per Tailwind standard utility usage. 
+   
+   However, for a smoother UX without complex JS animation, 
+   we can just use the simple fade/slide from Tailwind's classes in HTML.
+*/

@@ -22,36 +22,107 @@
 </body>
 </html> -->
 
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Register | My E-Commerce Store</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register - Modern E-Commerce</title>
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Poppins:wght@500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            fontFamily: {
+              sans: ['Inter', 'sans-serif'],
+              display: ['Poppins', 'sans-serif'],
+            },
+            colors: {
+              primary: {
+                DEFAULT: '#2563EB',
+                hover: '#1d4ed8'
+              }
+            }
+          }
+        }
+      }
+    </script>
 
-  <!-- New correct CSS paths -->
-  <link rel="stylesheet" href="/css/style.css">
-  <link rel="stylesheet" href="/css/pages/register.css">
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/pages/register.css">
 </head>
+<body class="flex items-center justify-center min-h-screen p-4">
 
-<body>
-  <div class="auth-container">
-    <h2>Create Account</h2>
+    <!-- Toast Container -->
+    <div id="toast-container" class="fixed top-5 right-5 z-50 flex flex-col gap-2 pointer-events-none"></div>
 
-    <form id="registerForm">
-      <input type="text" id="name" placeholder="Full Name" required />
-      <input type="email" id="email" placeholder="Email" required />
-      <input type="password" id="password" placeholder="Password" required />
-      <button type="submit" class="auth-btn">Register</button>
-    </form>
+    <!-- Register Card -->
+    <div class="glass-card w-full max-w-md p-8 sm:p-10 opacity-0 transform translate-y-5" id="registerCard">
+        <div class="text-center mb-8">
+            <h2 class="font-display text-3xl font-bold text-gray-900 tracking-tight">Create Account</h2>
+            <p class="text-gray-500 mt-2 text-sm">Join us today and start your journey</p>
+        </div>
 
-    <p>
-      Already have an account?
-      <a href="/login.html">Login</a>
-    </p>
-  </div>
+        <form id="registerForm" class="space-y-6" novalidate>
+            <!-- Full Name -->
+            <div class="group relative">
+                <input type="text" id="full_name" class="peer w-full rounded-xl border-2 border-gray-200 bg-transparent px-4 py-3 pl-11 text-gray-900 focus:border-primary focus:outline-none placeholder-transparent transition-all duration-300" placeholder=" " autocomplete="name">
+                <i data-lucide="user" class="absolute left-3 top-3.5 h-5 w-5 text-gray-400 peer-focus:text-primary transition-colors duration-300"></i>
+                <label for="full_name" class="absolute left-10 top-3.5 text-gray-400 bg-white px-1 text-base transition-all duration-300 peer-placeholder-shown:top-3.5 peer-placeholder-shown:text-base peer-focus:-top-2.5 peer-focus:text-xs peer-focus:text-primary peer-not-placeholder-shown:-top-2.5 peer-not-placeholder-shown:text-xs pointer-events-none">Full Name</label>
+                <p class="error-msg text-red-500 text-xs mt-1 hidden pl-1"></p>
+            </div>
 
-  <script src="/js/auth.js"></script>
+            <!-- Email -->
+            <div class="group relative">
+                <input type="email" id="email" class="peer w-full rounded-xl border-2 border-gray-200 bg-transparent px-4 py-3 pl-11 text-gray-900 focus:border-primary focus:outline-none placeholder-transparent transition-all duration-300" placeholder=" " autocomplete="email">
+                <i data-lucide="mail" class="absolute left-3 top-3.5 h-5 w-5 text-gray-400 peer-focus:text-primary transition-colors duration-300"></i>
+                <label for="email" class="absolute left-10 top-3.5 text-gray-400 bg-white px-1 text-base transition-all duration-300 peer-placeholder-shown:top-3.5 peer-placeholder-shown:text-base peer-focus:-top-2.5 peer-focus:text-xs peer-focus:text-primary peer-not-placeholder-shown:-top-2.5 peer-not-placeholder-shown:text-xs pointer-events-none">Email Address</label>
+                <p class="error-msg text-red-500 text-xs mt-1 hidden pl-1"></p>
+            </div>
+
+            <!-- Password -->
+            <div class="group relative">
+                <input type="password" id="password" class="peer w-full rounded-xl border-2 border-gray-200 bg-transparent px-4 py-3 pl-11 text-gray-900 focus:border-primary focus:outline-none placeholder-transparent transition-all duration-300" placeholder=" " autocomplete="new-password">
+                <i data-lucide="lock" class="absolute left-3 top-3.5 h-5 w-5 text-gray-400 peer-focus:text-primary transition-colors duration-300"></i>
+                <label for="password" class="absolute left-10 top-3.5 text-gray-400 bg-white px-1 text-base transition-all duration-300 peer-placeholder-shown:top-3.5 peer-placeholder-shown:text-base peer-focus:-top-2.5 peer-focus:text-xs peer-focus:text-primary peer-not-placeholder-shown:-top-2.5 peer-not-placeholder-shown:text-xs pointer-events-none">Password</label>
+                <p class="error-msg text-red-500 text-xs mt-1 hidden pl-1"></p>
+            </div>
+
+            <!-- Submit Button -->
+            <button type="submit" class="ripple-btn relative w-full bg-primary hover:bg-primary-hover text-white font-semibold py-3.5 rounded-full shadow-lg shadow-blue-500/30 transition-all active:scale-95 overflow-hidden flex items-center justify-center gap-2">
+                <span>Register</span>
+            </button>
+
+
+               <!-- <button type="submit" class="btn-login" id="submitBtn">
+                    <span>Register</span>
+                    <i data-lucide="arrow-right" class="btn-icon"></i>
+                </button> -->
+
+
+
+        </form>
+
+        <div class="mt-8 text-center text-sm text-gray-600">
+            <p>Already have an account? <a href="/login.html" class="text-primary font-medium hover:underline transition-colors">Login</a></p>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="/js/auth.js"></script>
+    <script src="/js/register.js"></script>
+    <script>
+        lucide.createIcons();
+    </script>
 </body>
 </html>

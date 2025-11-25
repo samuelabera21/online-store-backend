@@ -1,116 +1,73 @@
 /* =====================================================
-   GLOBAL
+   CORE & ANIMATIONS
 ===================================================== */
-body {
-  font-family: "Segoe UI", Arial, sans-serif;
-  margin: 0;
-  padding: 0;
-  background: #f5f7fa;
-  color: #333;
+html {
+  scroll-behavior: smooth;
 }
 
-.container {
-  max-width: 620px;
-  margin: 40px auto;
-  background: #fff;
-  padding: 25px;
-  border-radius: 12px;
-  box-shadow: 0 4px 18px rgba(0,0,0,0.08);
+/* Animations matching Welcome Page */
+.reveal {
+  opacity: 0;
+  transform: translateY(30px);
+  animation: revealAnim 0.8s cubic-bezier(0.5, 0, 0, 1) forwards;
 }
 
-/* =====================================================
-   HEADER / NAVBAR
-===================================================== */
-header {
-  background: #fff;
-  padding: 15px 25px;
-  border-bottom: 1px solid #ddd;
+.delay-100 { animation-delay: 0.1s; }
+.delay-200 { animation-delay: 0.2s; }
+.delay-300 { animation-delay: 0.3s; }
+
+@keyframes revealAnim {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
-header h1 {
-  margin: 0;
-  font-size: 26px;
-  font-weight: 700;
+/* Custom File Input override for clean alignment */
+input[type="file"]::file-selector-button {
+  transition: all 0.2s ease;
 }
 
-nav a {
-  text-decoration: none;
-  color: #007bff;
-  font-weight: 500;
-  margin-right: 10px;
+/* Smooth Image Loading */
+img {
+  transition: opacity 0.3s ease-in-out;
 }
 
-nav a:hover {
-  text-decoration: underline;
+/* Button Focus States */
+button:focus-visible {
+  outline: 2px solid #007bff;
+  outline-offset: 2px;
 }
 
-/* =====================================================
-   PROFILE IMAGE
-===================================================== */
-.profile-img {
-  width: 120px;
-  height: 120px;
-  border-radius: 50%;
-  display: block;
-  margin: 15px 0;
-  object-fit: cover;
-  border: 3px solid #ddd;
-}
 
-#avatarForm {
-  margin-bottom: 25px;
-}
-
-#avatar {
-  padding: 10px;
-}
-
-/* =====================================================
-   TEXT SECTIONS
-===================================================== */
-h2 {
-  font-size: 22px;
-  margin-bottom: 10px;
-  font-weight: 700;
-}
-
-p {
-  font-size: 15px;
-  margin: 8px 0;
-}
-
-/* =====================================================
-   BUTTONS
-===================================================== */
-.btn {
-  display: inline-block;
-  background: #007bff;
+.toast {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  background: #28c76f;
   color: #fff;
-  padding: 10px 14px;
-  border-radius: 8px;
-  text-decoration: none;
-  border: none;
-  margin-top: 10px;
-  cursor: pointer;
+  padding: 12px 18px;
+  border-radius: 10px;
+  font-size: 15px;
   font-weight: 600;
-  transition: 0.2s;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+  opacity: 1;
+  transition: opacity .5s, transform .3s;
+  z-index: 9999;
+  animation: slideIn .3s ease-out;
 }
 
-.btn:hover {
-  background: #005fcc;
+.toast-error {
+  background: #ff4d4f;
 }
 
-button.btn {
-  padding: 10px 16px;
-}
-
-hr {
-  margin: 20px 0;
-  border: none;
-  border-bottom: 1px solid #ddd;
-}
-
-/* Edit + Change Password Buttons */
-.btn + .btn {
-  margin-left: 8px;
+@keyframes slideIn {
+  from {
+    transform: translateX(60px);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
 }

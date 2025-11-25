@@ -1,118 +1,3 @@
-<!-- <!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Your Cart</title>
-  <link rel="stylesheet" href="/css/style.css" />
-</head>
-<body>
-  <header>
-    <h1>Your Shopping Cart</h1>
-    <nav>
-      <a href="/index.html">Home</a> |
-      <a href="/cart.html">Cart</a> |
-      <a href="/login.html">Logout</a>
-    </nav>
-  </header>
-
-  <main>
-    <div id="cart-items" class="container"></div>
-    <div id="cart-total"></div>
-  </main>
-
-  <script src="/js/cart.js"></script>
-</body>
-</html> -->
-<!-- <!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>My Cart</title>
-  <link rel="stylesheet" href="../css/style.css">
-</head>
-<body>
-  <header>
-    <h1>My Shopping Cart</h1>
-    <nav>
-      <a href="index.html">Home</a>
-      <a href="order.html">Orders</a>
-      <a href="login.html" id="logout-btn">Logout</a>
-    </nav>
-  </header>
-
-  <main>
-    <div id="cart-container"></div>
-    <h3 id="total"></h3>
-    <button id="checkout-btn" class="btn">Place Order</button>
-  </main>
-
-  <script src="./js/utils.js"></script>
-  <script src="./js/cart.js"></script>
-</body>
-</html> -->
-
-<!-- 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>🛒 My Cart</title>
-  <link rel="stylesheet" href="../css/style.css" />
-</head>
-<body>
-  <header>
-    <h1>My Shopping Cart</h1>
-    <nav>
-      <a href="index.html">Home</a> |
-      <a href="orders.html">My Orders</a> |
-      <a href="#" id="logout-btn">Logout</a>
-    </nav>
-  </header>
-
-  <main>
-    <section id="cart-container" class="container"></section>
-    <h3 id="total"></h3>
-    <button id="checkout-btn" class="btn">Place Order</button>
-  </main>
-
-  <script src="./js/cart.js"></script>
-</body>
-</html> -->
-
-
-
-
-
-<!-- <!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>🛒 My Cart</title>
-  <link rel="stylesheet" href="/css/style.css" />
-</head>
-<body>
-  <header>
-    <h1>My Shopping Cart</h1>
-    <nav>
-      <a href="/index.html">Home</a> |
-      <a href="/orders.html">My Orders</a> |
-      <a href="#" id="logout-btn">Logout</a>
-    </nav>
-  </header>
-
-  <main>
-    <section id="cart-container" class="container"></section>
-    <h3 id="total"></h3>
-    <button id="checkout-btn" class="btn">Place Order</button>
-  </main>
-
-  <script src="/js/cart.js"></script>
-</body>
-</html> -->
 
 
 
@@ -121,36 +6,49 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>🛒 My Cart</title>
-  <!-- <link rel="stylesheet" href="/css/style.css" /> -->
-
-<link rel="stylesheet" href="/css/style.css">
-<link rel="stylesheet" href="/css/pages/cart.css">
-<link rel="stylesheet" href="/css/components/buttons.css">
-
-
+  <title>🛒 My Cart | ModernShop</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <!-- Keep your global stylesheet (if any) + component CSS -->
+  <link rel="stylesheet" href="/css/style.css">
+  <link rel="stylesheet" href="/css/pages/cart.css">
+  <link rel="stylesheet" href="/css/components/buttons.css">
 </head>
 <body>
-  <header>
-    <h1>My Shopping Cart</h1>
-    <nav>
-      <a href="/index.html">Home</a> |
-      <a href="/orders.html">My Orders</a> |
-      <a href="#" id="logout-btn">Logout</a>
-      <a href="/checkout.html">Checkout</a>
-    </nav>
+  <header class="main-header">
+    <div class="header-content">
+      <div class="brand">
+        <span class="icon">🛒</span>
+        <h1>ModernShop</h1>
+      </div>
+      <nav class="main-nav">
+        <a href="/index.html">Home</a>
+        <a href="/orders.html">My Orders</a>
+        <a href="/checkout.html">Checkout</a>
+        <a href="#" id="logout-btn" class="logout-link">Logout</a>
+      </nav>
+    </div>
   </header>
 
   <main>
-    <section id="cart-container" class="container"></section>
+    <div class="container">
+      <h1 class="page-title animate-fade-up">My Shopping Cart</h1>
 
-    <h3 id="total"></h3>
+      <section id="cart-container" class="cart-container animate-fade-up delay-1">
+        <!-- Cart items will be injected here by JS -->
+        <div class="loading-state">Loading your cart...</div>
+      </section>
 
-    <button id="checkout-btn" class="btn" style="margin-top:15px;background:green;color:white;">
-      Place Order
-    </button>
+      <section class="cart-summary animate-fade-up delay-2">
+        <div class="summary-content">
+          <h3 id="total">Total: $0.00</h3>
+          <button id="checkout-btn" class="btn btn-primary">Place Order</button>
+        </div>
+      </section>
+    </div>
   </main>
-  
+
   <script src="/js/cart.js"></script>
 </body>
 </html>

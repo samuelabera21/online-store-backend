@@ -22,6 +22,16 @@
 </html> -->
 
 
+
+
+
+
+
+
+
+
+
+<!-- 
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -29,7 +39,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Login | My E-Commerce Store</title>
 
-  <!-- New correct CSS paths -->
+ 
   <link rel="stylesheet" href="/css/style.css">
   <link rel="stylesheet" href="/css/pages/login.css">
 </head>
@@ -51,5 +61,92 @@
   </div>
 
   <script src="/js/auth.js"></script>
+</body>
+</html> -->
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login | Secure Access</title>
+    
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    
+    <!-- Styles -->
+    <link rel="stylesheet" href="/css/style.css"> <!-- Assuming global styles exist -->
+    <link rel="stylesheet" href="/css/pages/login.css">
+    
+    <!-- Scripts -->
+    <script src="/js/auth.js" defer></script>
+    <script src="/js/login.js" defer></script>
+</head>
+<body>
+
+    <div class="login-wrapper">
+        <!-- Abstract Background Shapes -->
+        <div class="bg-shape shape-1"></div>
+        <div class="bg-shape shape-2"></div>
+
+        <!-- Login Card -->
+        <div class="login-card" id="loginCard">
+            
+            <div class="card-header">
+                <div class="brand-logo">
+                    <i data-lucide="shield-check"></i>
+                </div>
+                <h1>Login to Your Account</h1>
+                <p class="subtitle">Welcome back! Please enter your details.</p>
+            </div>
+
+            <form id="loginForm" novalidate>
+                
+                <!-- Email Input -->
+                <div class="input-group">
+                    <div class="input-wrapper">
+                        <i data-lucide="mail" class="input-icon"></i>
+                        <input type="email" id="email" required placeholder=" " autocomplete="email">
+                        <label for="email">Email Address</label>
+                    </div>
+                </div>
+
+                <!-- Password Input -->
+                <div class="input-group">
+                    <div class="input-wrapper">
+                        <i data-lucide="lock" class="input-icon"></i>
+                        <input type="password" id="password" required placeholder=" " autocomplete="current-password">
+                        <label for="password">Password</label>
+                        <button type="button" class="password-toggle" id="togglePassword" aria-label="Toggle password visibility">
+                            <i data-lucide="eye"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <div class="form-actions">
+                    <a href="#" class="forgot-password">Forgot Password?</a>
+                </div>
+
+                <button type="submit" class="btn-login" id="submitBtn">
+                    <span>Sign In</span>
+                    <i data-lucide="arrow-right" class="btn-icon"></i>
+                </button>
+
+            </form>
+
+            <div class="card-footer">
+                <p>Don't have an account? <a href="/register.html" class="register-link">Register</a></p>
+            </div>
+        </div>
+    </div>
+
 </body>
 </html>
