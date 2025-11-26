@@ -1,86 +1,114 @@
-/* ==========================
-   GLOBAL PAGE STYLE
-========================== */
-body {
-  font-family: "Segoe UI", Arial, sans-serif;
-  background: #f5f7fa;
-  margin: 0;
-  padding: 0;
-  color: #333;
+/* =====================================================
+   CORE & ANIMATIONS
+===================================================== */
+html {
+    scroll-behavior: smooth;
 }
 
-/* ==========================
-   HEADER
-========================== */
-header {
-  background: #ffffff;
-  padding: 20px;
-  border-bottom: 1px solid #ddd;
-  text-align: center;
+/* Animations matching Profile Page */
+.reveal {
+    opacity: 0;
+    transform: translateY(30px);
+    animation: revealAnim 0.8s cubic-bezier(0.5, 0, 0, 1) forwards;
 }
 
-header h1 {
-  font-size: 28px;
-  margin-bottom: 8px;
-  font-weight: 700;
+.delay-100 { animation-delay: 0.1s; }
+.delay-200 { animation-delay: 0.2s; }
+.delay-300 { animation-delay: 0.3s; }
+
+@keyframes revealAnim {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
-header nav a {
-  text-decoration: none;
-  margin: 0 10px;
-  color: #0077ff;
-  font-size: 14px;
-  font-weight: 500;
+/* =====================================================
+   TOAST NOTIFICATIONS
+===================================================== */
+.toast {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    background: #fff;
+    color: #333;
+    padding: 16px 24px;
+    border-radius: 12px;
+    font-size: 14px;
+    font-weight: 600;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+    border-left: 5px solid #28c76f;
+    opacity: 0;
+    transform: translateX(100%);
+    z-index: 9999;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    transition: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
 }
 
-header nav a:hover {
-  text-decoration: underline;
+.toast.show {
+    opacity: 1;
+    transform: translateX(0);
 }
 
-/* ==========================
-   DASHBOARD GRID
-========================== */
-.dashboard-container {
-  max-width: 1100px;
-  margin: 40px auto;
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
-  gap: 25px;
-  padding: 0 20px;
+.toast.toast-error {
+    border-left-color: #dc3545;
 }
 
-/* ==========================
-   DASHBOARD CARD
-========================== */
-.card {
-  background: #ffffff;
-  padding: 25px;
-  border-radius: 12px;
-  text-align: center;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.06);
-  transition: 0.25s ease;
+.toast.toast-info {
+    border-left-color: #007bff;
 }
 
-.card:hover {
-  transform: translateY(-6px);
-  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.1);
+/* =====================================================
+   TABLE STYLES
+===================================================== */
+/* Custom scrollbar for table container */
+.overflow-x-auto::-webkit-scrollbar {
+    height: 8px;
+}
+.overflow-x-auto::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    border-radius: 4px;
+}
+.overflow-x-auto::-webkit-scrollbar-thumb {
+    background: #d1d5db; 
+    border-radius: 4px;
+}
+.overflow-x-auto::-webkit-scrollbar-thumb:hover {
+    background: #9ca3af; 
 }
 
-.card h3 {
-  font-size: 18px;
-  margin-bottom: 12px;
-  font-weight: 600;
-  color: #444;
+#product-body tr {
+    transition: background-color 0.2s ease;
 }
 
-.card p {
-  font-size: 26px;
-  font-weight: 700;
-  margin: 0;
-  color: #007bff;
+#product-body tr:hover {
+    background-color: #f8fafc; /* gray-50 */
 }
 
-/* Special color for revenue */
-#revenue {
-  color: #28a745 !important;
+/* =====================================================
+   UTILITIES
+===================================================== */
+/* Loading Spinner */
+.spinner {
+    width: 16px;
+    height: 16px;
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    border-radius: 50%;
+    border-top-color: #fff;
+    animation: spin 0.8s ease-in-out infinite;
+    display: inline-block;
+}
+
+@keyframes spin {
+    to { transform: rotate(360deg); }
+}
+
+/* Image Preview transitions */
+#image-preview {
+    transition: transform 0.5s ease;
+}
+.group:hover #image-preview {
+    transform: scale(1.05);
 }

@@ -75,17 +75,16 @@
 
 
 
-<!DOCTYPE html>
+<!-- <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Manage Users</title>
 
-  <!-- Global Styles -->
+
   <link rel="stylesheet" href="/css/style.css" />
 
-  <!-- Page-specific Styles -->
   <link rel="stylesheet" href="/css/pages/manage-users.css" />
 </head>
 <body>
@@ -124,5 +123,188 @@
 </main>
 
 <script src="/admin/js/manage-users.js"></script>
+</body>
+</html> -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>LuxeMarket | Manage Users</title>
+  
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Inter', 'sans-serif'],
+            display: ['Poppins', 'sans-serif'],
+          },
+          colors: {
+            primary: '#007bff',
+            secondary: '#f7f7f7',
+            dark: '#333333',
+            danger: '#ff4d4f',
+            success: '#28c76f'
+          }
+        }
+      }
+    }
+  </script>
+
+  <!-- Lucide Icons -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="/css/pages/manage-users.css" />
+</head>
+<body class="bg-gray-50 text-dark antialiased font-sans selection:bg-blue-100 selection:text-primary">
+
+  <!-- Navigation -->
+  <nav id="navbar" class="fixed w-full z-50 transition-all duration-300 py-4 bg-white/90 backdrop-blur-md shadow-sm">
+    <div class="container mx-auto px-6 flex justify-between items-center">
+      <!-- Logo -->
+      <a href="/index.html" class="flex items-center gap-2 text-2xl font-display font-bold text-primary">
+        <i data-lucide="shield-check" class="w-8 h-8"></i>
+        <span>AdminPanel</span>
+      </a>
+
+      <!-- Desktop Navigation -->
+      <div class="hidden md:flex items-center gap-8">
+        <a href="/admin/dashboard.html" class="text-sm font-medium text-gray-600 hover:text-primary transition-colors">Dashboard</a>
+        <a href="/admin/manage-products.html" class="text-sm font-medium text-gray-600 hover:text-primary transition-colors">Manage Products</a>
+        <a href="/index.html" class="text-sm font-medium text-gray-600 hover:text-primary transition-colors">User Site</a>
+        <button id="logout-btn" class="flex items-center gap-2 text-sm font-medium text-red-500 hover:text-red-700 transition-colors">
+          <i data-lucide="log-out" class="w-4 h-4"></i> Logout
+        </button>
+      </div>
+
+      <!-- Mobile Menu Button -->
+      <button class="md:hidden text-gray-700 focus:outline-none">
+        <i data-lucide="menu" class="w-6 h-6"></i>
+      </button>
+    </div>
+  </nav>
+
+  <!-- Main Content -->
+  <main class="min-h-screen pt-28 pb-20 relative overflow-hidden">
+    <!-- Background Decoration -->
+    <div class="absolute top-0 right-0 w-1/2 h-full bg-gradient-to-l from-blue-100/50 to-transparent -z-10"></div>
+    <div class="absolute top-20 left-20 w-64 h-64 bg-primary/5 rounded-full blur-3xl -z-10"></div>
+
+    <div class="container mx-auto px-6 max-w-6xl">
+      
+      <!-- Page Title -->
+      <div class="mb-8 flex flex-col md:flex-row md:items-end justify-between gap-4 reveal">
+        <div>
+          <h1 class="text-3xl md:text-4xl font-display font-bold text-dark">Manage Users</h1>
+          <p class="text-gray-500 mt-2">View, edit roles, and manage system access.</p>
+        </div>
+        
+        <!-- Stats/Badge placeholder -->
+        <div class="bg-white px-5 py-2 rounded-full shadow-sm border border-gray-100 flex items-center gap-2">
+            <span class="w-2 h-2 rounded-full bg-green-500 animate-pulse"></span>
+            <span id="total-users-count" class="text-sm font-medium text-gray-600">Loading users...</span>
+        </div>
+      </div>
+
+      <!-- Toolbar (Search & Filter) -->
+      <div class="bg-white rounded-2xl shadow-sm border border-gray-100 p-4 mb-6 reveal delay-100 flex flex-col md:flex-row gap-4 justify-between items-center">
+        
+        <!-- Search Input -->
+        <div class="relative w-full md:w-96">
+            <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                <i data-lucide="search" class="w-4 h-4 text-gray-400"></i>
+            </div>
+            <input type="text" id="search-input" placeholder="Search by ID, Name, or Email..." 
+                class="w-full pl-10 pr-4 py-2.5 bg-gray-50 border-transparent focus:bg-white focus:border-primary/30 rounded-xl text-sm transition-all outline-none" />
+        </div>
+
+        <!-- Role Filter -->
+        <div class="flex items-center gap-3 w-full md:w-auto">
+            <span class="text-sm font-medium text-gray-500 whitespace-nowrap">Filter by:</span>
+            <select id="role-filter" class="w-full md:w-40 bg-gray-50 border-none text-sm font-medium text-gray-700 rounded-xl py-2.5 px-4 focus:ring-2 focus:ring-primary/20 cursor-pointer outline-none">
+                <option value="all">All Users</option>
+                <option value="admin">Admins</option>
+                <option value="user">Regular Users</option>
+            </select>
+        </div>
+      </div>
+
+      <!-- Users Table Card -->
+      <div class="bg-white rounded-3xl shadow-xl shadow-blue-900/5 overflow-hidden border border-gray-100 reveal delay-200">
+        <div class="overflow-x-auto">
+          <table class="w-full text-left border-collapse">
+            <thead class="bg-gray-50 border-b border-gray-100">
+              <tr>
+                <th class="p-5 text-xs font-semibold tracking-wide text-gray-500 uppercase">ID</th>
+                <th class="p-5 text-xs font-semibold tracking-wide text-gray-500 uppercase">User Info</th>
+                <th class="p-5 text-xs font-semibold tracking-wide text-gray-500 uppercase">Role</th>
+                <th class="p-5 text-xs font-semibold tracking-wide text-gray-500 uppercase">Joined Date</th>
+                <th class="p-5 text-xs font-semibold tracking-wide text-gray-500 uppercase text-right">Actions</th>
+              </tr>
+            </thead>
+            <tbody id="user-body" class="divide-y divide-gray-50">
+              <!-- JS will populate rows here -->
+            </tbody>
+          </table>
+        </div>
+        
+        <!-- Pagination / Footer (Optional placeholder) -->
+        <div class="bg-gray-50 p-4 text-center text-xs text-gray-400 border-t border-gray-100">
+           End of list
+        </div>
+      </div>
+
+    </div>
+  </main>
+
+  <!-- Custom Modal Overlay -->
+  <div id="confirm-modal" class="fixed inset-0 z-[60] hidden flex items-center justify-center bg-dark/30 backdrop-blur-sm opacity-0 transition-opacity duration-300">
+    <div class="bg-white rounded-2xl shadow-2xl p-8 max-w-sm w-full mx-4 transform scale-95 transition-transform duration-300" id="modal-content">
+        <div class="w-12 h-12 rounded-full bg-red-100 text-red-500 flex items-center justify-center mb-4 mx-auto">
+            <i data-lucide="alert-triangle" class="w-6 h-6"></i>
+        </div>
+        <h3 class="text-xl font-bold text-center text-gray-800 mb-2">Are you sure?</h3>
+        <p class="text-center text-gray-500 text-sm mb-6">Do you really want to delete this user? This process cannot be undone.</p>
+        <div class="flex gap-3">
+            <button id="cancel-modal-btn" class="flex-1 py-2.5 rounded-xl border border-gray-200 text-gray-700 font-medium hover:bg-gray-50 transition-colors">Cancel</button>
+            <button id="confirm-modal-btn" class="flex-1 py-2.5 rounded-xl bg-red-500 text-white font-medium hover:bg-red-600 shadow-lg shadow-red-500/30 transition-all">Delete</button>
+        </div>
+    </div>
+  </div>
+
+  <script src="/admin/js/manage-users.js"></script>
 </body>
 </html>

@@ -84,8 +84,19 @@
 
   <script src="/admin/js/manage-products.js"></script>
 </body>
-</html> -->
+</html>
 
+ -->
+
+
+
+
+
+
+
+
+
+<!-- 
 
 
 <!DOCTYPE html>
@@ -114,7 +125,6 @@
   <section>
     <h2>All Products</h2>
 
-    <!-- PRODUCT TABLE -->
     <table class="product-table" id="product-table">
       <thead>
         <tr>
@@ -131,7 +141,6 @@
     </table>
   </section>
 
-  <!-- FORM SECTION -->
   <section class="form-container">
     <h3 id="form-title">Add New Product</h3>
 
@@ -150,4 +159,288 @@
 
 <script src="/admin/js/manage-products.js"></script>
 </body>
-</html>
+</html> -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>LuxeMarket | Manage Products</title>
+
+ 
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+ 
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Inter', 'sans-serif'],
+            display: ['Poppins', 'sans-serif'],
+          },
+          colors: {
+            primary: '#007bff',
+            secondary: '#f7f7f7',
+            dark: '#333333',
+            danger: '#dc3545',
+            success: '#28c76f',
+          }
+        }
+      }
+    }
+  </script>
+
+  
+  <script src="https://unpkg.com/lucide@latest"></script>
+
+
+  <link rel="stylesheet" href="/admin/css/manage-products.css">
+</head>
+<body class="bg-gray-50 text-dark antialiased font-sans selection:bg-blue-100 selection:text-primary">
+
+  
+  <nav class="fixed w-full z-50 transition-all duration-300 py-4 bg-white/90 backdrop-blur-md shadow-sm">
+    <div class="container mx-auto px-6 flex justify-between items-center">
+      
+      <div class="flex items-center gap-2 text-2xl font-display font-bold text-primary">
+        <i data-lucide="layout-dashboard" class="w-8 h-8"></i>
+        <span>Admin Panel</span>
+      </div>
+
+      
+      <div class="hidden md:flex items-center gap-8">
+        <a href="/admin/dashboard.html" class="text-sm font-medium text-gray-600 hover:text-primary transition-colors">Dashboard</a>
+        <a href="/admin/manage-users.html" class="text-sm font-medium text-gray-600 hover:text-primary transition-colors">Manage Users</a>
+        <a href="/index.html" class="text-sm font-medium text-gray-600 hover:text-primary transition-colors flex items-center gap-1">
+          <i data-lucide="external-link" class="w-4 h-4"></i> View Site
+        </a>
+        <a href="#" id="logout-btn" class="flex items-center gap-2 text-sm font-medium text-red-500 hover:text-red-700 transition-colors">
+          <i data-lucide="log-out" class="w-4 h-4"></i> Logout
+        </a>
+      </div>
+    </div>
+  </nav>
+
+
+  <main class="min-h-screen pt-28 pb-20 px-6 container mx-auto">
+    
+    
+    <div class="flex flex-col md:flex-row justify-between items-end mb-8 reveal">
+      <div>
+        <h1 class="text-3xl font-display font-bold text-gray-900">Manage Products</h1>
+        <p class="text-gray-500 mt-1">Add, update, or remove products from the catalog.</p>
+      </div>
+      <button onclick="scrollToForm()" class="hidden md:flex items-center gap-2 bg-primary text-white px-5 py-2.5 rounded-xl font-medium shadow-lg shadow-blue-500/20 hover:bg-blue-600 transition-all hover:-translate-y-0.5">
+        <i data-lucide="plus-circle" class="w-5 h-5"></i> Add New Product
+      </button>
+    </div>
+
+    <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+      
+      
+      <section class="lg:col-span-2 reveal delay-100">
+        <div class="bg-white rounded-2xl shadow-xl shadow-gray-200/50 border border-gray-100 overflow-hidden">
+          
+         
+          <div class="p-6 border-b border-gray-100 bg-white space-y-4">
+            <div class="flex flex-col sm:flex-row justify-between items-center gap-4">
+              <h2 class="text-lg font-semibold text-gray-800 flex items-center gap-2">
+                <i data-lucide="list" class="w-5 h-5 text-primary"></i> Current Inventory
+              </h2>
+              <span class="text-xs font-medium bg-blue-100 text-primary px-3 py-1 rounded-full">Live Data</span>
+            </div>
+
+        
+            <div class="flex flex-col sm:flex-row gap-3">
+              <div class="relative flex-1">
+                <i data-lucide="search" class="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-400"></i>
+                <input type="text" id="search-input" placeholder="Search products..." 
+                  class="w-full pl-10 pr-4 py-2 bg-gray-50 border border-gray-200 rounded-xl text-sm focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none transition-all" />
+              </div>
+              
+              <div class="relative min-w-[180px]">
+                <i data-lucide="filter" class="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-400"></i>
+                <select id="filter-select" 
+                  class="w-full pl-10 pr-8 py-2 bg-gray-50 border border-gray-200 rounded-xl text-sm focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none appearance-none cursor-pointer transition-all">
+                  <option value="all">All Products</option>
+                  <option value="low_stock">Low Stock (< 10)</option>
+                  <option value="out_stock">Out of Stock (0)</option>
+                  <option value="price_asc">Price: Low to High</option>
+                  <option value="price_desc">Price: High to Low</option>
+                </select>
+                <i data-lucide="chevron-down" class="absolute right-3 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-400 pointer-events-none"></i>
+              </div>
+            </div>
+          </div>
+          
+          <div class="overflow-x-auto">
+            <table id="product-table" class="w-full text-left border-collapse">
+              <thead>
+                <tr class="bg-gray-50 text-gray-500 text-xs uppercase tracking-wider">
+                  <th class="p-4 font-semibold border-b border-gray-100">ID</th>
+                  <th class="p-4 font-semibold border-b border-gray-100">Product</th>
+                  <th class="p-4 font-semibold border-b border-gray-100">Price</th>
+                  <th class="p-4 font-semibold border-b border-gray-100 text-center">Stock</th>
+                  <th class="p-4 font-semibold border-b border-gray-100 text-right">Actions</th>
+                </tr>
+              </thead>
+              <tbody id="product-body" class="divide-y divide-gray-100 text-sm">
+                <tr><td colspan="5" class="p-8 text-center text-gray-400">Loading products...</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+
+     
+      <section class="lg:col-span-1 reveal delay-200">
+        <div class="bg-white rounded-2xl shadow-xl shadow-gray-200/50 border border-gray-100 sticky top-28">
+          <div class="p-6 border-b border-gray-100 bg-gray-50/50">
+            <h3 id="form-title" class="text-lg font-semibold text-gray-800 flex items-center gap-2">
+              <i data-lucide="package-plus" class="w-5 h-5 text-primary"></i> Add New Product
+            </h3>
+          </div>
+
+          <div class="p-6">
+            <form id="productForm" enctype="multipart/form-data" class="space-y-4">
+              <input type="hidden" id="productId" />
+           
+              <input type="hidden" id="image_url" />
+
+              <div>
+                <label class="block text-xs font-semibold text-gray-500 uppercase tracking-wide mb-1">Name</label>
+                <input type="text" id="name" placeholder="e.g. Luxury Watch" required 
+                  class="w-full bg-gray-50 border border-gray-200 text-gray-800 text-sm rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-transparent block p-3 transition-all outline-none" />
+              </div>
+
+              <div>
+                <label class="block text-xs font-semibold text-gray-500 uppercase tracking-wide mb-1">Description</label>
+                <textarea id="description" placeholder="Product details..." rows="3"
+                  class="w-full bg-gray-50 border border-gray-200 text-gray-800 text-sm rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-transparent block p-3 transition-all outline-none resize-none"></textarea>
+              </div>
+
+              <div class="grid grid-cols-2 gap-4">
+                <div>
+                  <label class="block text-xs font-semibold text-gray-500 uppercase tracking-wide mb-1">Price ($)</label>
+                  <input type="number" id="price" placeholder="0.00" required step="0.01" 
+                    class="w-full bg-gray-50 border border-gray-200 text-gray-800 text-sm rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-transparent block p-3 transition-all outline-none" />
+                </div>
+                <div>
+                  <label class="block text-xs font-semibold text-gray-500 uppercase tracking-wide mb-1">Stock</label>
+                  <input type="number" id="stock" placeholder="0" 
+                    class="w-full bg-gray-50 border border-gray-200 text-gray-800 text-sm rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-transparent block p-3 transition-all outline-none" />
+                </div>
+              </div>
+
+              <div>
+                <label class="block text-xs font-semibold text-gray-500 uppercase tracking-wide mb-2">Product Image</label>
+                
+            
+                <div id="image-preview-container" class="hidden mb-3 rounded-xl overflow-hidden border border-gray-200 relative group h-40">
+                    <img id="image-preview" src="" alt="Preview" class="w-full h-full object-cover">
+                    <div class="absolute inset-0 bg-black/40 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
+                        <span class="text-white text-xs font-medium">Change Image Below</span>
+                    </div>
+                </div>
+
+                <label class="flex flex-col items-center justify-center w-full h-32 border-2 border-gray-300 border-dashed rounded-xl cursor-pointer bg-gray-50 hover:bg-gray-100 hover:border-primary transition-all group">
+                  <div class="flex flex-col items-center justify-center pt-5 pb-6">
+                      <i data-lucide="cloud-upload" class="w-8 h-8 text-gray-400 group-hover:text-primary mb-2 transition-colors"></i>
+                      <p class="mb-1 text-sm text-gray-500"><span class="font-semibold text-primary">Click to upload</span></p>
+                      <p class="text-xs text-gray-500">SVG, PNG, JPG (MAX. 2MB)</p>
+                  </div>
+                  <input type="file" id="image" accept="image/*" class="hidden" />
+                </label>
+                <p id="file-name-display" class="text-xs text-center text-gray-500 mt-2 truncate h-4"></p>
+              </div>
+
+              <div class="pt-2 flex gap-2">
+                <button type="submit" id="save-btn" class="flex-1 bg-primary text-white py-3 rounded-xl font-semibold shadow-lg shadow-blue-500/30 hover:bg-blue-600 transition-all hover:-translate-y-0.5 flex justify-center items-center gap-2">
+                  <i data-lucide="save" class="w-4 h-4"></i>
+                  <span>Save Product</span>
+                </button>
+                <button type="button" id="cancel-btn" onclick="resetFormState()" class="hidden px-4 py-3 rounded-xl border border-gray-200 text-gray-600 hover:bg-gray-100 transition-colors font-medium">
+                  Cancel
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </section>
+
+    </div>
+  </main>
+
+  
+  <div id="deleteModal" class="fixed inset-0 z-[100] hidden" aria-labelledby="modal-title" role="dialog" aria-modal="true">
+    <div class="fixed inset-0 bg-gray-900/75 backdrop-blur-sm transition-opacity"></div>
+    <div class="fixed inset-0 z-10 w-screen overflow-y-auto">
+      <div class="flex min-h-full items-end justify-center p-4 text-center sm:items-center sm:p-0">
+        <div class="relative transform overflow-hidden rounded-2xl bg-white text-left shadow-2xl transition-all sm:my-8 sm:w-full sm:max-w-md border border-gray-100">
+          <div class="bg-white px-4 pb-4 pt-5 sm:p-6 sm:pb-4">
+            <div class="sm:flex sm:items-start">
+              <div class="mx-auto flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-full bg-red-100 sm:mx-0 sm:h-10 sm:w-10">
+                <i data-lucide="alert-triangle" class="w-6 h-6 text-red-600"></i>
+              </div>
+              <div class="mt-3 text-center sm:ml-4 sm:mt-0 sm:text-left">
+                <h3 class="text-lg font-semibold leading-6 text-gray-900" id="modal-title">Delete Product</h3>
+                <div class="mt-2">
+                  <p class="text-sm text-gray-500">Are you sure you want to delete this product? This action cannot be undone and will remove the item from the live store.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="bg-gray-50 px-4 py-3 sm:flex sm:flex-row-reverse sm:px-6">
+            <button type="button" id="confirm-delete-btn" class="inline-flex w-full justify-center rounded-xl bg-red-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-red-500 sm:ml-3 sm:w-auto transition-colors">Delete</button>
+            <button type="button" onclick="closeDeleteModal()" class="mt-3 inline-flex w-full justify-center rounded-xl bg-white px-3 py-2 text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50 sm:mt-0 sm:w-auto transition-colors">Cancel</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="/admin/js/manage-products.js"></script>
+  <script>
+ 
+    lucide.createIcons();
+    
+   
+    function scrollToForm() {
+      const form = document.querySelector('section:last-child');
+      form.scrollIntoView({ behavior: 'smooth' });
+      document.getElementById('name').focus();
+    }
+  </script>
+</body>
+</html> 

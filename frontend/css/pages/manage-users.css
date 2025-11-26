@@ -1,116 +1,103 @@
-/* ==========================
-   GLOBAL PAGE LAYOUT
-========================== */
-body {
-  font-family: "Segoe UI", Arial, sans-serif;
-  background: #f5f7fa;
-  margin: 0;
-  padding: 0;
-  color: #333;
+/* =====================================================
+   CORE & ANIMATIONS
+===================================================== */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Animations matching Profile Page */
+.reveal {
+  opacity: 0;
+  transform: translateY(30px);
+  animation: revealAnim 0.8s cubic-bezier(0.5, 0, 0, 1) forwards;
+}
+
+.delay-100 { animation-delay: 0.1s; }
+.delay-200 { animation-delay: 0.2s; }
+.delay-300 { animation-delay: 0.3s; }
+
+@keyframes revealAnim {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Table Row Hover & Transition */
+tbody tr {
+  transition: background-color 0.2s ease, transform 0.1s ease;
+}
+tbody tr:hover {
+  background-color: #f9fafb; /* gray-50 */
 }
 
 /* ==========================
-   HEADER
+   TOAST NOTIFICATIONS
 ========================== */
-header {
-  background: #fff;
-  padding: 22px;
-  border-bottom: 1px solid #ddd;
-  text-align: center;
-}
-
-header h1 {
-  margin: 0;
-  font-size: 28px;
-  font-weight: 700;
-}
-
-header nav {
-  margin-top: 8px;
-}
-
-header nav a {
-  color: #007bff;
-  text-decoration: none;
-  margin: 0 8px;
-  font-weight: 500;
-}
-
-header nav a:hover {
-  text-decoration: underline;
-}
-
-/* ==========================
-   CONTAINER
-========================== */
-.container {
-  max-width: 1050px;
-  margin: 30px auto;
-  background: #ffffff;
-  padding: 25px;
-  border-radius: 10px;
-  box-shadow: 0 3px 10px rgba(0,0,0,0.06);
-}
-
-.container h2 {
-  font-size: 22px;
+.toast {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  background: #28c76f;
+  color: #fff;
+  padding: 14px 24px;
+  border-radius: 12px;
+  font-size: 15px;
   font-weight: 600;
-  margin-bottom: 18px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+  opacity: 1;
+  transition: opacity 0.5s, transform 0.3s;
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  animation: slideIn 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.toast-error {
+  background: #ff4d4f;
+}
+
+@keyframes slideIn {
+  from {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
 }
 
 /* ==========================
-   USER TABLE
+   MODAL ANIMATIONS
 ========================== */
-.user-table {
-  width: 100%;
-  border-collapse: collapse;
-  overflow: hidden;
-  border-radius: 8px;
-  background: #fff;
+#confirm-modal.show {
+    opacity: 1;
 }
 
-.user-table thead {
-  background: #007bff;
-  color: #fff;
-}
-
-.user-table th, .user-table td {
-  padding: 12px;
-  text-align: left;
-  border-bottom: 1px solid #e6e6e6;
-}
-
-.user-table tr:hover {
-  background: #f9f9f9;
+#confirm-modal.show #modal-content {
+    transform: scale(1);
 }
 
 /* ==========================
-   BUTTONS (SMALL)
+   SHIMMER LOADING
 ========================== */
-.btn-small {
-  padding: 6px 10px;
-  font-size: 13px;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-  margin-right: 6px;
-  font-weight: 500;
+.shimmer {
+    background: #f6f7f8;
+    background-image: linear-gradient(to right, #f6f7f8 0%, #edeef1 20%, #f6f7f8 40%, #f6f7f8 100%);
+    background-repeat: no-repeat;
+    background-size: 800px 100%; 
+    animation-duration: 1s;
+    animation-fill-mode: forwards; 
+    animation-iteration-count: infinite;
+    animation-name: placeholderShimmer;
+    animation-timing-function: linear;
+    border-radius: 6px;
+    color: transparent !important;
 }
 
-.btn-delete {
-  background: #dc3545;
-  color: #fff;
-}
-
-.btn-delete:hover {
-  background: #b51f2e;
-}
-
-.btn-role {
-  background: #007bff;
-  color: #fff;
-}
-
-.btn-role:hover {
-  background: #005fcc;
+@keyframes placeholderShimmer {
+    0% { background-position: -468px 0; }
+    100% { background-position: 468px 0; }
 }
