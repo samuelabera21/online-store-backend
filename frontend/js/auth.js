@@ -218,7 +218,7 @@
 
 
 // // frontend/js/auth.js
-const API_URL = "http://localhost:5000/api/auth";
+const API_URL = "http://online-store-backend-oxl9.onrender.com/api/auth";
 
 // REGISTER
 const registerForm = document.getElementById("registerForm");

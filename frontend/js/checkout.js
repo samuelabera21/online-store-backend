@@ -260,7 +260,7 @@
 
 
 
-const API_URL = "http://localhost:5000/api";
+const API_URL = "http://online-store-backend-oxl9.onrender.com/api";
 const token = localStorage.getItem("token");
 
 // Redirect if not logged in

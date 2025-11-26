@@ -392,7 +392,7 @@
 
 
 // frontend/js/products.js
-const API_URL = "http://localhost:5000/api";
+const API_URL = "http://online-store-backend-oxl9.onrender.com/api";
 
 // small escape to avoid XSS when inserting server values into innerHTML
 function escapeHtml(str = "") {

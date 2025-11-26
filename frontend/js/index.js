@@ -401,7 +401,7 @@ window.updateCartCount = async function() {
   // If logged in, try to fetch server cart count
   if (token) {
     try {
-      const res = await fetch('http://localhost:5000/api/cart', {
+      const res = await fetch('http://online-store-backend-oxl9.onrender.com/api/cart', {
         headers: { Authorization: `Bearer ${token}` }
       });
       if (res.ok) {

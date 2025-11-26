@@ -189,7 +189,7 @@
 
 
 // ---------------------- CONFIG -----------------------
-const API_URL = "http://localhost:5000/api/auth";
+const API_URL = "http://online-store-backend-oxl9.onrender.com/api/auth";
 const token = localStorage.getItem("token");
 
 // If no token → send user to login page
@@ -221,7 +221,7 @@ async function loadProfile() {
     const user = await res.json();
 
     document.getElementById("profile-avatar").src =
-      user.avatar ? `http://localhost:5000${user.avatar}` : "img/default-avatar.png";
+      user.avatar ? `http://online-store-backend-oxl9.onrender.com${user.avatar}` : "img/default-avatar.png";
 
     document.getElementById("user-name").textContent = user.name || "Unknown User";
     document.getElementById("user-email").textContent = user.email || "Not available";
