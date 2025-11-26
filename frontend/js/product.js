@@ -57,7 +57,7 @@
 
 
 // ---------------------- CONFIG -----------------------
-const API_BASE_URL = "http://online-store-backend-oxl9.onrender.com/api";
+const API_BASE_URL = "https://online-store-backend-oxl9.onrender.com/api";
 const productId = new URLSearchParams(window.location.search).get("id");
 const token = localStorage.getItem("token");
 
@@ -139,7 +139,7 @@ function renderProduct(product) {
   // Fix image URL if it's relative
   const imageUrl = product.image_url.startsWith("http") 
     ? product.image_url 
-    : `http://online-store-backend-oxl9.onrender.com${product.image_url}`;
+    : `https://online-store-backend-oxl9.onrender.com${product.image_url}`;
 
   // Fake original price for visual appeal (20% markup)
   const originalPrice = (Number(product.price) * 1.2).toFixed(2);

@@ -105,7 +105,7 @@
 
 
 
-const API_URL = "http://online-store-backend-oxl9.onrender.com/api/auth";
+const API_URL = "https://online-store-backend-oxl9.onrender.com/api/auth";
 const token = localStorage.getItem("token");
 
 // ---------------------- INIT -------------------------

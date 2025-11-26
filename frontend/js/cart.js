@@ -330,7 +330,7 @@
 
 
 // cart.js - modern styled cart but fully compatible with original backend
-const API_URL = "http://online-store-backend-oxl9.onrender.com/api";
+const API_URL = "https://online-store-backend-oxl9.onrender.com/api";
 const token = localStorage.getItem("token");
 
 // keep original behaviour: require token

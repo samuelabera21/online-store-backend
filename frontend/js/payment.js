@@ -466,7 +466,7 @@
 
 
 // // frontend/js/payment.js (FINAL CLEAN VERSION)
-const API_URL = "http://online-store-backend-oxl9.onrender.com/api";
+const API_URL = "https://online-store-backend-oxl9.onrender.com/api";
 const token = localStorage.getItem("token");
 
 if (!token) {
